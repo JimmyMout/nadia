@@ -1,0 +1,38 @@
+{
+	"name": "hotel",
+	"version": "1.0.0",
+	"description": "",
+	"main": "start.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node ./start.js",
+		"watch": "nodemon ./start.js",
+		"debug": "nodemon --inspect ./start.js"
+	},
+	"nodemonConfig": {
+		"ignore": [
+			"model/*.json"
+		]
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@azure/cosmos": "^3.6.3",
+		"assert": "^2.0.0",
+		"bcrypt": "^3.0.6",
+		"express-flash": "0.0.2",
+		"express-session": "^1.17.1",
+		"mysql": "^2.18.1",
+		"passport": "^0.4.1",
+		"passport-local": "^1.0.0",
+		"urlencoded-parser": "^1.0.0",
+		"body-parser": "^1.19.0",
+		"express": "^4.17.1",
+		"express-handlebars": "^4.0.4",
+		"nodemon": "^2.0.4"
+	},
+	"devDependencies": {
+		"dotenv": "^8.2.0"
+	}
+}
