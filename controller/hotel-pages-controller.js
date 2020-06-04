@@ -4,9 +4,10 @@
 
 //const model = require('../model/hotel-model-mysql.js');
 
+const bcrypt = require('bcrypt');
 
 
-exports.hotelPagesRender = function (req, res) {
+exports.hotelPagesRender = async function (req, res) {
     //Ο δρομολογητής (router) δεν ξεχωρίζει με βάση το query string
     //(μόνο με βάση το πρωτόκολλο και το path). Εδώ, ανάλογα με τις τιμές
     //του query string εκτελούνται οι αντίστοιχες ενέργειες 
@@ -86,6 +87,7 @@ exports.hotelPagesRender = function (req, res) {
     //Συνεχίζουμε την εκτέλεση, δείχνουμε όλες τις εργασίες που υπάρχουν στη βάση
     else {
         res.render('index');
+        console.log(req.session);
         // model.getAllTasks(function (err, tasks) {
         //     if (err) {
         //         res.send(err);
@@ -94,6 +96,19 @@ exports.hotelPagesRender = function (req, res) {
         //         res.render('tasks', { tasks: tasks });
         //     }
         // });
+        try {
+            const hashedPassword = await bcrypt.hash("aa", 10);
+            console.log("αυτό είναι το hashed aa: ",hashedPassword );
+        } catch (error) {
+            console.log("κάτι πήγε λάθος στο hashing");
+        }
     }
     
+}
+exports.renderLogin = function (req, res){
+    if (req.query.page) {
+        req.session.destroy(); // αυτό υπάρχει έτσι ώστε να εξαφανίζονται τα μηνύματα σφαλματος στο login page
+        res.render(req.query.page );}
+    else{res.render("login");}
+
 }

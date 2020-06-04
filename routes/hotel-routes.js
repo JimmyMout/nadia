@@ -9,7 +9,7 @@ const hotelPagesControler = require('../controller/hotel-pages-controller');
 //const taskListControllerFetch = require('../controller/task-list-controller-fetch');
 
 //Για την υποστήριξη σύνδεσης/αποσύνδεσης χρηστών
-//const logInController = require('../controller/log-in-controller');
+const logInController = require('../controller/log-in-controller');
 
 
 //Καταχώριση συμπεριφοράς σε διάφορα URL
@@ -24,6 +24,10 @@ const hotelPagesControler = require('../controller/hotel-pages-controller');
 
 router.route('/').get(hotelPagesControler.hotelPagesRender);
 
+router.route('/login').post(logInController.doLogin);
+router.route('/login').get(hotelPagesControler.renderLogin);
+
+router.route('/logout').get(logInController.doLogout);
 
 //Αιτήματα για σύνδεση
 //Δείξε τη φόρμα

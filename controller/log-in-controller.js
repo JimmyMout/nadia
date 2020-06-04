@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');
 
 /** Διαλέξτε το κατάλληλο μοντέλο */
-//const userModel = require('../model/user-model');
+const userModel = require('../model/user-model');
 
 exports.showLogInForm = function (req, res) {
     res.render('login', {});
@@ -30,32 +30,81 @@ exports.doLogin = function (req, res, authenticated) {
     //Ελέγχει αν το username και το password είναι σωστά και εκτελεί την
     //συνάρτηση επιστροφής authenticated
     const authenticateUser = async (username, password, authenticated) => {
-        const user = userModel.getUserByUsername(username);
-        if (user == null) {
-            authenticated(null, false, { message: 'Δε βρέθηκε αυτός ο χρήστης' });
-        }
+        //const user = userModel.getUserByUsername(username);
+        userModel.getUserByUsername(username,async (err,user)=>{
+            console.log("afto epistrefetai ston user", user);
 
-        try {
-            //Σύγκρινε το hash του κωδικού που δόθηκε με αυτό που είναι αποθηκευμένο
-            if (await bcrypt.compare(password, user.password)) {
-                console.log('Επιτυχής σύνδεση');
-                authenticated(null, user);
-            } else {
-                authenticated(null, null, { message: 'Ο κωδικός πρόσβασης είναι λάθος' });
+            if(err){
+                //edw erxetai otan den briskei to username
+                console.log(err);
+                authenticated(true,null);
+                return;
             }
-        } catch (error) {
-            authenticated(error);
-        }
+
+            if (user == null) {
+                // authenticated(null, false, { message: 'Δε βρέθηκε αυτός ο χρήστης' });
+                console.log('Δε βρέθηκε αυτός ο χρήστης');
+                authenticated(1,null);
+                return;
+             }
+
+             try {
+                //Σύγκρινε το hash του κωδικού που δόθηκε με αυτό που είναι αποθηκευμένο
+                console.log("sto bcrypt compare μπαίνουν:",password, user.password)
+                if ( await bcrypt.compare(password, user.password)) {
+                    console.log('Επιτυχής σύνδεση,σωστός κωδικός');
+                    authenticated(null, user);
+                } else {
+                    console.log("λάθος κωδικός ");
+                    authenticated(2, null);
+                    //authenticated(null, null, { message: 'Ο κωδικός πρόσβασης είναι λάθος' });
+                }
+            } catch (error) {
+                console.log("προέκυψε ερρορ στο  try-catch", error);
+                //authenticated(error);
+            }
+
+        });
+        //console.log("afto epistrefetai ston user", user);
+        // if (user == null) {
+        //    // authenticated(null, false, { message: 'Δε βρέθηκε αυτός ο χρήστης' });
+        //    console.log('Δε βρέθηκε αυτός ο χρήστης');
+        //    return;
+        // }
+
+        // try {
+        //     //Σύγκρινε το hash του κωδικού που δόθηκε με αυτό που είναι αποθηκευμένο
+        //     if (await bcrypt.compare(password, user.password)) {
+        //         console.log('Επιτυχής σύνδεση,σωστός κωδικός');
+        //         authenticated(null, user);
+        //     } else {
+        //         console.log("λάθος κωδικός ");
+        //         //authenticated(null, null, { message: 'Ο κωδικός πρόσβασης είναι λάθος' });
+        //     }
+        // } catch (error) {
+        //     console.log("προέκυψε ερρορ στο  try-catch");
+        //     //authenticated(error);
+        // }
     }
 
     authenticateUser(req.body.username, req.body.password, (err, loginResult) => {
-        if (err) {
-            console.log(err);
-            res.redirect("/login");
+        if (err == 1) {
+            console.log("egine error",err);
+            req.session.noname = true;
+            res.redirect("login");
+
+        }
+        else if(err == 2){
+            console.log("egine error",err);
+            req.session.wrong= true;
+            res.redirect("login");
+
         }
         else {
             //Θέτουμε τη μεταβλητή συνεδρίας "loggedId"
-            req.session.loggedUserId = loginResult.id;
+            req.session.loggedUserId = loginResult.userid;
+            req.session.name = loginResult.onoma;
+            req.session.lname = loginResult.epwnymo;
             console.log(req.session);
             //Αν έχει τιμή η μεταβλητή req.session.originalUrl, αλλιώς όρισέ τη σε "/" 
             const redirectTo = req.session.originalUrl || "/";

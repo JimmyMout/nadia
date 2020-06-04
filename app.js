@@ -43,6 +43,11 @@ app.use(express.static('static'));
 app.use((req, res, next) => {
 
     res.locals.userId = req.session.loggedUserId;
+    res.locals.name = req.session.name;
+    res.locals.lname = req.session.lname;
+    res.locals.noname = req.session.noname;
+    res.locals.wrong = req.session.wrong;
+
     next();
 })
 

@@ -147,7 +147,7 @@ border-color: #c5cc3e;
     width:100%; /* Full width */
     height:100%; /* Full height */
     overflow: "auto"; /* Enable scroll if needed */
-    background-color:rgb(197, 204, 62,0.8); /* Black w/ opacity */
+    background-color:rgb(147, 153, 39,1); /* Black w/ opacity */
 }
 
 #log-in-modal form {
@@ -155,7 +155,6 @@ border-color: #c5cc3e;
     opacity: 1 !important;
     padding: 2%;
     width:250px ;
-    height:250px;
     margin: 150px auto;
     border-radius: 2%;
     color:#dfe660 ;
@@ -163,6 +162,11 @@ border-color: #c5cc3e;
 }
 
 #log-in-modal input{
+    background-color: rgb(247, 213, 183);
+
+}
+#log-in-modal button{
+    color:#171801 !important ;
     background-color: rgb(247, 213, 183);
 
 }
