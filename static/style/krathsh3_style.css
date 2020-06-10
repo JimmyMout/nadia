@@ -1,15 +1,7 @@
-
-
-
 /* .footer{
     background-image: url(img/img1.jpg)
 } */
 /* ~~~~~~~~~~~~~~~ HEADER  ~~~~~~~~~~~~~~ */
-div.header-buttons a{
-    color:inherit; 
-    text-decoration: none;
-
-}
 div.header{
     background-color:#2e2726;
 }
@@ -58,14 +50,7 @@ p.phone-number span{
     background-color:#939927 ;
     border-color:#939927;
     border-radius: 5px;
-
 }
-button:focus{
-    border: none !important;
-    
-}
-
-
 .header-buttons button:hover{
     background-color:#a4a854;
 }
@@ -77,10 +62,6 @@ button:focus{
   
   
   /* ~~~~~~~~~~~~~~~ NAVBAR ~~~~~~~~~~~~~~ */
-    nav{
-        padding: 0px !important;
-    }
-
 
   li div.dropdown-menu{
     display: none;
@@ -111,10 +92,6 @@ button:focus{
     border-bottom-style:inset;
     border-color: #503f3d;
 }
-  li.nav-item a{
-      color: white !important;
-
-  }
 
 
   nav ul li a {
@@ -123,7 +100,7 @@ button:focus{
 
   nav .dropdown-menu {
       
-      background-color:#503f3d; 
+      background-color:#503f3d; ;
   }
   nav .dropdown-menu a{
       color: cornsilk;
@@ -131,7 +108,6 @@ button:focus{
 
 li.nav-item a:hover {
     color:#c5cc3e !important;
-    
 }
 
 li.nav-item:hover{
@@ -139,54 +115,10 @@ border-bottom-style:inset;
 border-color: #c5cc3e;
 }
   /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-
-
- /* LOG IN MODAL~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-#log-in-modal{
-    position:fixed; /* Stay in place */
-    z-index:1; /* Sit on top */
-    width:100%; /* Full width */
-    height:100%; /* Full height */
-    overflow: "auto"; /* Enable scroll if needed */
-    background-color:rgb(147, 153, 39,1); /* Black w/ opacity */
-}
-
-#log-in-modal form {
-    background-color:#503f3d;
-    opacity: 1 !important;
-    padding: 2%;
-    width:250px ;
-    margin: 150px auto;
-    border-radius: 2%;
-    color:#dfe660 ;
-    box-shadow: yellowgreen;
-}
-
-#log-in-modal input{
-    background-color: rgb(247, 213, 183);
-
-}
-#log-in-modal button{
-    color:#171801 !important ;
-    background-color: rgb(247, 213, 183);
-
-}
-
-#log-in-modal a {
-    color:#c5cc3e !important;
-    font-size: smaller;
-}
-
-
-/*  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
   
   
   
   /* ~~~~~~~~~~~~~~~ CAROUSEL ~~~~~~~~~~~~~~ */
-  div.carousel-caption a{
-    color:#dde641
-  }
     
  ol.carousel-indicators li:active{
     background-color:#c5cc3e ;
@@ -197,31 +129,12 @@ border-color: #c5cc3e;
  }
 
  div.carousel-item img {
-     height: 600px !important;
+     height: 400px !important;
  }
 
   /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
   
   /* ~~~~~~~~~~~~~~~~~~ MAIN CONTENT ~~~~~~~~~~~~ */
-    body{
-      background-color: rgb(250, 246, 240);
- 
-  }
-  div.main-content{
-    font-family:Verdana;
-
-  }
-  div.first-par{
-    font-family:Verdana;
-     color:linen;
-     background-color: #271e1d;
-  }
-
-  div.first-par h3{
-    font-weight:lighter;
-  }
-
-
   h4 a {
       opacity: 1;
       color:#a4a854;
@@ -241,9 +154,6 @@ border-color: #c5cc3e;
   /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
   /* ~~~~~~~~~~~~~~~ FOOTER ~~~~~~~~~~~~~~ */
-  div.footer{
-    background-color:#e7dcda;
-  }
     .footer .fa {
         font-size: large;
         margin-right: 10px;
@@ -254,7 +164,6 @@ border-color: #c5cc3e;
     .footer .fa:hover {
         color: #c5cc3e ;
     }
-
 
   /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
   

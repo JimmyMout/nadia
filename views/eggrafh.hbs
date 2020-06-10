@@ -53,19 +53,19 @@
     <h2 class="text-light" style="padding-left: 15px; padding-right: 15px;">
       Κάνε Εγγραφή δωρεάν!
     </h2>
-    <form class="container" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(209, 54, 54, 0.0));">
+    <form class="container" action="/eggrafh_user" method="POST" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(209, 54, 54, 0.0));">
     <div class="container">
       <div class="row text-light">
           <div class="col-lg-4 col-md-4 col-sm-6">
             <label for="validationServer01">Όνομα</label>
-            <input type="text" class="form-control is-valid" id="validationServer01" placeholder="First name" value="Γιώργος" required>
+            <input type="text" class="form-control is-valid" name="onoma" id="validationServer01" placeholder="First name" value="Γιώργος" required>
             <div class="valid-feedback">
                 Looks good!
             </div>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-6">
             <label for="validationServer02">Επίθετο</label>
-            <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Last name" value="Γεωργίου" required>
+            <input type="text" class="form-control is-valid" name="epwnymo" id="validationServer02" placeholder="Last name" value="Γεωργίου" required>
             <div class="valid-feedback">
                 Looks good!
             </div>
@@ -75,10 +75,17 @@
     <div class="container">
         <div class="row text-light">
             <div class="col-lg-4 col-md-4 col-sm-6">
-                <label for="validationServer02">E-mail Διεύθυνση</label>
-                <input type="email" class="form-control is-invalid" id="validationServer03" placeholder="email address" required>
+                <label for="validationServer03">E-mail Διεύθυνση</label>
+                <input type="email" class="form-control is-invalid" name="email" id="validationServer03" placeholder="email address" required>
                 <div class="invalid-feedback">
                     Please provide a valid email address.
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <label for="validationServer03">Όνομα Χρήστη</label>
+                <input type="text" class="form-control is-invalid" name="username" id="validationServer03" placeholder="π.χ. geiasoukoritsaki" required>
+                <div class="invalid-feedback">
+                    Please provide a valid username.
                 </div>
             </div>
         </div>
@@ -86,15 +93,15 @@
     <div class="container">
         <div class="row text-light">
             <div class="col-lg-4 col-md-4 col-sm-6">
-                <label for="validationServer02">Κωδικός</label>
-                <input type="password" class="form-control is-invalid" id="validationServer03" placeholder="password" required>
+                <label for="validationServer04">Κωδικός</label>
+                <input type="password" class="form-control is-invalid" name="password" id="validationServer04" placeholder="password" required>
                 <div class="invalid-feedback">
                     Please provide a valid password.
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6">
-                <label for="validationServer02">Επιβεβαίωση Κωδικού</label>
-                <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="password" required>
+                <label for="validationServer05">Επιβεβαίωση Κωδικού</label>
+                <input type="password" class="form-control is-invalid" id="validationServer05" placeholder="password" required>
                 <div class="invalid-feedback">
                     Please provide a valid password.
                 </div>
@@ -104,13 +111,13 @@
     <div class="container">
         <div class="row text-light">
             <div class="col-lg-8 col-md-8 col-sm-6">
-              <label for="validationServer02">Χώρα</label>
+              <label for="validationServer06">Χώρα</label>
                 <div class="form-group">
-                    <select class="custom-select" required>
+                    <select class="custom-select" name="xwra" required>
                       <option value="">Επιλέξτε μια Χώρα</option>
-                      <option value="1">Ελλάδα</option>
-                      <option value="2">Κύπρος</option>
-                      <option value="3">κλπ</option>
+                      <option value="Ελλάδα">Ελλάδα</option>
+                      <option value="Κύπρος">Κύπρος</option>
+                      <option value="Άλλο">κλπ</option>
                     </select>
                     <div class="invalid-feedback">Example invalid custom select feedback</div>
                   </div>
@@ -120,29 +127,29 @@
     <div class="container">
         <div class="row text-light">
             <div class="col-lg-3 col-md-3 col-sm-6">
-              <label for="validationServer02">Διεύθυνση</label>
-              <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="Address" required>
+              <label for="validationServer07">Διεύθυνση</label>
+              <input type="text" class="form-control is-invalid" name="onoma_addr" id="validationServer07" placeholder="Address" required>
               <div class="invalid-feedback">
                 Please provide a valid Address.
               </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6">
-              <label for="validationServer02">Αριθμός Διεύθυνσης</label>
-              <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="Number" required>
+              <label for="validationServer08">Αριθμός Διεύθυνσης</label>
+              <input type="text" class="form-control is-invalid" name="arithmos_addr" id="validationServer08" placeholder="Number" required>
               <div class="invalid-feedback">
                   Please provide a valid number.
               </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6">
-              <label for="validationServer02">Πόλη</label>
-              <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="City" value="" required>
+              <label for="validationServer09">Πόλη</label>
+              <input type="text" class="form-control is-invalid" id="validationServer09" placeholder="City" value="" required>
               <div class="invalid-feedback">
                   Please provide a valid City.
               </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6">
-              <label for="validationServer02">T.K.</label>
-              <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="T.K." required>
+              <label for="validationServer10">T.K.</label>
+              <input type="text" class="form-control is-invalid" name="tk" id="validationServer10" placeholder="T.K." required>
               <div class="invalid-feedback">
                   Please provide a valid T.K.
               </div>

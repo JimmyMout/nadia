@@ -15,7 +15,7 @@
     <div class="header container-fluid "  >
       <div class="row"  >
           <div class="col-12 col-sm-4">
-          <a href="?page=index"><img src="img/logo2.png" alt="" ></a>
+          <a href="/index"><img src="img/logo2.png" alt="" ></a>
           </div>
           <div class="col-12 col-sm-4">
               <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
@@ -31,10 +31,11 @@
                     </div>
                   </div>
                 </div>
-                                      {{#if name}}
+                  {{#if userId}}
                       <div style="color: #939927;">
                         Όνομα: <em> {{name}}</em> <br>
-                        Επώνυμο: <em>{{lname}}</em>
+                        Επώνυμο: <em>{{lname}}</em> <br>
+                        Πόντοι: <em>{{points}}</em>
                       </div>
 
                        {{/if}}
@@ -47,9 +48,10 @@
               <div class="header-buttons">
 
                   <br>
-                  <button  class="btn-default"  >
-                    <a style="color:inherit; text-decoration: none;" href="?page=eggrafh">SIGN IN  </a>                  </button>
-
+                  {{#if userId}} 
+                        <a  style="color: #939927;" href="/logout">Αποσύνδεση</a>
+                        {{/if}}
+                  
               </div>
 
           </div>
@@ -61,21 +63,19 @@
     </h2>
 
 
-    <form  class="forma1"
+    <form  class="forma1" action="/krathsh2Render" method="POST"
     style="width: 95%; margin: auto; background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(209, 54, 54, 0.0));">
     <div class="container">
       <div class="row text-light">
           <div class="col-lg-4 col-md-4 col-sm-6">
             Check In
             <input type="date" id="start"
-            name="trip-start" value=""
-            >
+            name="tripStart" value="" required >
           </div>
           <div class="col-lg-4 col-md-4 col-sm-6">
             Check Out
-            <input type="date" id="start"
-            name="trip-start" value=""
-            >
+            <input type="date" id="end"
+            name="tripEnd" value="" required >
           </div>
       </div>
   </div>
@@ -84,18 +84,24 @@
           <div class="col-lg-3 col-md-3 col-sm-6">
             Ενήλικες 
             <br>
-            <button id="minus" type="button" style="width: 50px;">-</button><input class="search" id="adults" type="text" value="0" style="width: 50px; text-align: center;" ><button id="plus" type="button" style="width: 50px;">+</button>
+            <button id="minus" type="button" style="width: 50px;">-</button>
+            <input class="search" id="adults" name="adults" type="text" required value="1" min="1" style="width: 50px; text-align: center;" >
+            <button id="plus" type="button" style="width: 50px;">+</button>
           </div>
           <div class="col-lg-3 col-md-3 col-sm-6">
             Παιδιά
             <br>
-            <button  id="minus" type="button" style="width: 50px;">-</button><input class="search" id="kids" type="text" value="0" style="width: 50px; text-align: center;" ><button id="plus" type="button" style="width: 50px;">+</button>
+            <button  id="minus" type="button" style="width: 50px;">-</button>
+            <input class="search" id="kids" name="kids" type="text" value="0" style="width: 50px; text-align: center;" >
+            <button id="plus" type="button" style="width: 50px;">+</button>
 
           </div>
           <div class="col-lg-3 col-md-3 col-sm-6">
             Δωμάτια
             <br>
-            <button id="minus" type="button" style="width: 50px;">-</button><input class="search" id="rooms" type="text" value="0" min="0" style="width: 50px; text-align: center;" ><button id="plus" type="button" style="width: 50px;">+</button>
+            <button id="minus" type="button" style="width: 50px;">-</button>
+            <input class="search" id="rooms" name="rooms" type="text" value="1" min="1" required style="width: 50px; text-align: center;" >
+            <button id="plus" type="button" style="width: 50px;">+</button>
 
           </div>
             <div class="col-lg-3 col-md-3 col-sm-6"></div>
@@ -106,7 +112,7 @@
         <div class="col-lg-3 col-md-3 col-sm-6">
           <div class="form-group">
             <label for="exampleFormControlInput1">Κωδικός</label>
-            <input class="form-control form-control-sm" type="text">
+            <input disabled class="form-control form-control-sm" type="text" placeholder="Temporary disabled">
           </div>
         </div>
     </div>
@@ -114,7 +120,7 @@
   <div class="container">
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-6">
-          <button class="btn btn-sm search1" type="button" style="background-color: #939927;">Αναζήτηση</button>
+          <button class="btn btn-sm search1" type="submit" style="background-color: #939927;">Αναζήτηση</button>
         </div>
     </div>
   </div>

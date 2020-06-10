@@ -20,7 +20,7 @@
         <div class="header container-fluid "  >
             <div class="row"  >
                 <div class="col-12 col-sm-4">
-                <a href=""><img src="img/nadia_hotel.png" alt="" ></a>
+                <a href="/index"><img src="img/nadia_hotel.png" alt="" ></a>
                 </div>
                 <div class="col-12 col-sm-4">
                     <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
@@ -36,15 +36,6 @@
                           </div>
                         </div>
                       </div>
-                      {{#if userId}}
-                      <div style="color: #939927;">
-                        Όνομα: <em> {{name}}</em> <br>
-                        Επώνυμο: <em>{{lname}}</em> <br>
-                        Πόντοι: <em>{{points}}</em>
-                      </div>
-
-                       {{/if}}
-
                 </div>
     
                 <div class="col-12 col-sm-4" >
@@ -53,17 +44,15 @@
                     </p>
                     <div class="header-buttons" style="margin-bottom:5px;">
                         <button  class="btn-default"  style="margin-bottom: 3px;" >
-                           <a href="/krathsh"> ΚΡΑΤΗΣΗ ONLINE  </a> 
+                           <a href="/?page=krathsh"> ΚΡΑΤΗΣΗ ONLINE  </a> 
                         </button>
                         <br>
                         
                         {{#if userId}} 
-                        <a type="submit"  style="color: #939927;" href="/istoriko?istoriko_userid={{userId}}">Ιστορικό /</a>  <br>
                         <a  style="color: #939927;" href="/logout">Αποσύνδεση</a>
                         {{else}}
                         <button  class="btn-default"  >
-                            {{!-- <a  href="?page=eggrafh">SIGN UP  </a> --}}
-                            <a  href="/eggrafh">SIGN UP  </a>
+                            <a  href="/eggrafh">SIGN IN  </a>
                         </button><button id="log-in-button"  class="btn-default" style="margin-left: 5px;"  >
                           <a href="/login">LOG IN </a> 
                       </button>
@@ -77,30 +66,7 @@
             </div>
         </div>
 
-
-        <!-- LOG IN MODAL -->
-{{!-- 
-      <div class="modal " id="log-in-modal" style="display:none">
-
-          <div>
-          <form class="jumptron" action="" >
-            <label for="">Όνομα χρήστη</label> <br>
-            <input type="text" class="form-control " name="" id=" ">
-            <br> <br>
-
-            <label for="">Κωδικός Πρόσβασης</label><br>
-            <input type="password" class="form-control " name="" id="">
-
-            <a href="">Ξεχάσατε τον κωδικό προσαβης ; </a>
-            <hr>
-        </form>
-      </div>
-
-        </div> --}}
-
-        <!-- ~~~~~~~~~~~~ -->
-
-
+ 
 
         <nav class="navbar  navbar-expand-md navbar-light " >
             <!-- <a class="navbar-brand" href="#">HOME</a> -->
@@ -163,151 +129,58 @@
           </nav>
 
     </div>
+<!-- ----------------------------end of header-------------------------- -->
+<h2 class="text-center text-dark">Ιστορικό</h2>
+{{!-- {{#if name}}
+<form action="/" method="POST">
+  <input type="hidden" name="idsundedemenou" id="" value={{userId}}> --}}
 
+<div></div>
+<div class="row" style="margin: 0px; padding-bottom: 15px;">
+  {{#each plhrof}}
+      <div class="card col-12 col-md-4 col-sm-6" style="width:450px; border-color: green; padding: 0px;">
+        <img class="card-img-top" src="img\istoriko.jpg" alt="Card image">
+        <div class="card-img-overlay">
+          <h6 class="card-title">{{start_date}}-{{end_date}}</h6>
+          <p class="card-text">{{kostos}}€</p>
+          {{#if katastash}}
+            <a href="" class="btn btn-info">Ακύρωση</a>
+          {{/if}}
+        </div>
+      </div>
+  {{/each}}
 
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0"class="active" ></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1" ></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2" ></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <a href=""><img class="d-block w-100" src="img/img1.png" alt="First slide" ></a>
-      <div class="carousel-caption">
-        <h1> <a href="/krathsh">Κάντε κράτηση!</a></h1>
-        <p>Πρόλαβε τα καλύτερα δωμάτια!</p>
-      </div>
+{{!-- <div class="card col-12 col-md-4 col-sm-6" style="width:450px; border-color: green; padding: 0px;">
+    <img class="card-img-top" src="img\mikrh.jpg" alt="Card image">
+    <div class="card-img-overlay">
+        <h4 class="card-title">26/6/2020-28/6/2020</h4>
+        <p class="card-text">485€</p>
+        <a href="https://up1020048.z6.web.core.windows.net/istorikoper" class="btn btn-info">Περισσότερα</a>
     </div>
-    <div class="carousel-item">
-      <a href=""><img class="d-block w-100" src="img/img2.jpg" alt="First slide" ></a>
-            <div class="carousel-caption">
-        <h1> <a  href="/eggrafh">Κάντε Εγγραφή!</a></h1>
-        <p>Μοναδικές προσφορές για τους εγγραφέντες!</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <a href=""><img class="d-block w-100" src="img/img3.jpg" alt="First slide" ></a> 
-           <div class="carousel-caption">
-        <h1> <a  href="/fwtografies">Ρίξτε μια ματιά!</a></h1>
-        <p>Υψηλής αισθητικής χώροι σε κάθε γωνιά του Ξενοδοχείου !</p>
-      </div>
-    </div>
-  </div>
-
-  <a class="carousel-control-prev" href="#carouselExampleIndicators"  role="button" data-slide="prev">
-    <span class=" carousel-control-prev-icon" aria-hidden="true"  ></span>
-    <span class="sr-only" >Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
 </div>
-<br>
 
-
-<input type="text" value="{{kati}}">
-
-<div class="main-content container-fluid" >
-  <div class="row justify-content-around" >
-    <div class="col-2 " >
-      <img class="w-100"  src="img/pic4.jpg" >
-      
-
-
+<div class="card col-12 col-md-4 col-sm-6" style="width:450px; border-color: red; padding: 0px;">
+    <img class="card-img-top" src="img\mikrh.jpg" alt="Card image">
+    <div class="card-img-overlay">
+        <h4 class="card-title">23/2/2019-28/2/2019</h4>
+        <p class="card-text">885€</p>
+        <a href="https://up1020048.z6.web.core.windows.net/istorikoperneg" class="btn btn-info">Περισσότερα</a>
     </div>
-    <div class="col-8 first-par " >
-          <h3 style="padding: 5%;" >ΕΝΑ ΠΟΛΥΒΡΑΒΕΥΜΕΝΟ ΣΥΓΧΡΟΝΟ ΞΕΝΟΔΟΧΕΙΟ ΣΤΟ ΚΕΝΤΡΟ ΤΗΣ ΠΑΤΡΑΣ </h3> 
+</div>
+
+<div class="card col-12 col-md-4 col-sm-6" style="width:450px; border-color: red; padding: 0px;">
+    <img class="card-img-top" src="img\mikrh.jpg" alt="Card image">
+    <div class="card-img-overlay">
+        <h4 class="card-title">23/2/2019-28/2/2019</h4>
+        <p class="card-text">885€</p>
+        <a href="#" class="btn btn-info">Περισσότερα</a>
+    </div>
+</div> --}}
+
+</div>
 
 
-    </div>
-    <div class="col-1 " >
-    </div>
-  </div>
-  <br>
-  <div class="row justify-content-around" >
-    <div class="col-2 " >
-    </div>
-    <div class="col-8 " >
-      <p >
-        Μόλις λίγα μέτρα από την πλατεία Βασιλέως Γεωργίου , το κέντρο της Πάτρας - πόλη πρωτεύουσα του καρναβαλιού
-        και με διακόσμηση υψηλής αισθητικής και με έργα μοντέρνας τέχνης να κοσμούν όλους τους χώρους του , το ξενοδοχίο Nadia Hotel
-        με δωμάτια και υπηρεσίες όλων των προτιμήσεων και τιμών σας εγγυάται μια αξέχαστη διαμονή!
-        
-      </p>
-      <hr style="border-top: 2px dotted #2e2726; ">
-
-    </div>
-    <div class="col-1 ">
-    </div>
-    
-  </div>
-        
-
-  <div class="row justify-content-around" >
-    <div class="col-2 " >
-    </div>
-    <div class="col-8 " >
-      <h4> <a href=""> ΔΙΑΜΟΝΗ</a></h4>
-
-      <br>
-      <hr style="border-top: 2px dotted #2e2726; ">
-    </div>
-    <div class="col-1 " >
-    </div>
-    
-  </div>
-  <div class="row justify-content-around" >
-    <div class="col-2 " >
-    </div>
-    <div class="col-8 " >
-      <h4> <a href="">ΕΣΤΙΑΣΗ</a></h4>
-
-      <br>
-      <hr style="border-top: 2px dotted #2e2726; ">
-    </div>
-    <div class="col-1 " >
-    </div>
-    
-  </div>
-
-  <div class="row justify-content-around" >
-    <div class="col-2 " >
-    </div>
-    <div class="col-8 " >
-      <h4> <a href="">ΑΙΘΟΥΣΕΣ ΕΚΔΗΛΩΣΕΩΝ</a></h4>
-
-      <br>
-      <hr style="border-top: 2px dotted #2e2726; ">
-    </div>
-    <div class="col-1 "></div>
-    </div>
-
-    
-    
-  
-  
-  <div class="row justify-content-around" >
-    <div class="col-2 " >
-    </div>
-    <div class="col-8 " >
-      <h4> <a href="">ΥΠΗΡΕΣΙΕΣ ΑΝΑΨΥΧΗΣ</a></h4>
-
-      <br>
-      <hr style="border-top: 2px dotted #2e2726; ">
-    </div>
-    <div class="col-1 " >
-    </div>
-  
-  </div>
-
-  </div>
-
-  
-  <br><br>
-
-
+<!-- -------------------------------start of footer------------------------ -->
 <hr style=" margin:0px; border:0px; height:5px; background-color:#939927; ">
   <div class="footer"  >
     <div class="row">
@@ -378,7 +251,7 @@
             Πρόσβαση στο διαδίκτυο υψηλής ταχύτητας <br>
             Ασύρματη σύνδεση</p>
 
-            <p>CHECK–IN  CHECK–OUT <br>
+            <p>CHECK–IN & CHECK–OUT <br>
               2:00 PM             12:00 PM <br>
               H Reception λειτουργεί όλο το 24ωρο</p>
 
@@ -388,7 +261,7 @@
 
       </div>
       <hr style="background-color: #503f3d; margin-bottom: 0px;">
-      <div class="row container " style=" width: 100%; height: 25px;margin-bottom: 0px; margin: auto; background-color:#939927;">
+      <div class="row " style=" width: 800px; height: 25px;margin-bottom: 0px; margin: auto; background-color:#939927;">
         <p style=" margin: 0px; display: inline; justify-self: start;">&nbsp
           <a href="" class="fa fa-copyright" style="text-decoration: none; font-size: medium;"></a> 2020 Nadia Hotel Patras </p>
         
@@ -402,5 +275,6 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  
 </body>
 </html>

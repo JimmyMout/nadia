@@ -18,3 +18,17 @@ exports.getUserByUsername = function (username, result){
         }
     });
 }
+
+exports.User = function (Newonoma, Newepwnymo, Newemail, Newusername, Newpassword, Newxwra, Newonoma_addr, Newarithmos_addr, Newtk, Newuserid = '', Newpoints = 200) {
+    this.onoma = Newonoma;
+    this.epwnymo = Newepwnymo;
+    this.email = Newemail;
+    this.username = Newusername;
+    this.password = Newpassword;
+    this.xwra = Newxwra;
+    this.onoma_addr = Newonoma_addr;
+    this.arithmos_addr = Newarithmos_addr;
+    this.tk = Newtk;
+    this.points = Newpoints;
+    this.userid = Newuserid;
+}

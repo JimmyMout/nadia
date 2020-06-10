@@ -1,17 +1,18 @@
 'use strict';
 const bcrypt = require('bcrypt');
-const passport = require('passport');
+// const passport = require('passport');
+const db = require('../model/hotel-model-mysql');
 
 /** Διαλέξτε το κατάλληλο μοντέλο */
 const userModel = require('../model/user-model');
 
-exports.showLogInForm = function (req, res) {
-    res.render('login', {});
-}
+// exports.showLogInForm = function (req, res) {
+//     res.render('login', {});
+// }
 
-exports.showRegisterForm = function (req, res) {
-    res.render('register', {});
-}
+// exports.showRegisterForm = function (req, res) {
+//     res.render('register', {});
+// }
 
 exports.doRegister = function (req, res) {
     userModel.registerUser(req.body.username, req.body.password, (err, result) => {
@@ -24,6 +25,8 @@ exports.doRegister = function (req, res) {
         }
     })
 }
+
+
 
 exports.doLogin = function (req, res, authenticated) {
 
@@ -105,6 +108,7 @@ exports.doLogin = function (req, res, authenticated) {
             req.session.loggedUserId = loginResult.userid;
             req.session.name = loginResult.onoma;
             req.session.lname = loginResult.epwnymo;
+            req.session.points = loginResult.points;
             console.log(req.session);
             //Αν έχει τιμή η μεταβλητή req.session.originalUrl, αλλιώς όρισέ τη σε "/" 
             const redirectTo = req.session.originalUrl || "/";
@@ -142,8 +146,6 @@ exports.checkAuthenticated = function (req, res, next) {
 //συνδεδεμένοι
 exports.checkNotAuthenticated = function (req, res, next) {
     //Αν η μεταβλητή συνεδρίας έχει τεθεί, τότε ο χρήστης είναι συνεδεμένος
-
-
     if (req.session.loggedUserId) {
         console.log("user is authenticated");
         //Καλεί τον επόμενο χειριστή (handler) του αιτήματος
@@ -153,3 +155,35 @@ exports.checkNotAuthenticated = function (req, res, next) {
         next();
     }
 }
+
+// ~~~~~~~~~~~~~~~~~~~~~ STEFANOS ~~~~~~~~~~~~~~~~~~
+
+exports.newUser=async function(req,res,callback){
+    try{
+        console.log(req.body.password);
+    const hashedPassword1 = await bcrypt.hash(req.body.password, 10);
+        let newUser = new userModel.User(req.body.onoma, req.body.epwnymo, req.body.email, req.body.username, hashedPassword1, req.body.xwra, req.body.onoma_addr, req.body.arithmos_addr, req.body.tk);
+        db.putInBase(newUser);
+        res.redirect("/index");
+        callback(false, true);
+        }catch (error) {
+            callback(error);
+        }
+}
+
+
+// exports.registerUser = async function (username, password, callback) {
+//     try {
+//         const hashedPassword = await bcrypt.hash(password, 10);
+//         users.push(
+//             {
+//                 id: Date.now().toString(),
+//                 username: username,
+//                 password: hashedPassword
+//             }
+//         )
+//         callback(false, true);
+//     } catch (error) {
+//         callback(error);
+//     }
+// }

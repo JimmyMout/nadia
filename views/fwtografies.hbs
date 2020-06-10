@@ -14,13 +14,13 @@
 </head>
 <body>
 
-    <div class="sticky-top">
+<div class="sticky-top">
       
 
         <div class="header container-fluid "  >
             <div class="row"  >
                 <div class="col-12 col-sm-4">
-                <a href="?page=index"><img src="img/nadia_hotel.png" alt="" ></a>
+                <a href=""><img src="img/nadia_hotel.png" alt="" ></a>
                 </div>
                 <div class="col-12 col-sm-4">
                     <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
@@ -36,20 +36,39 @@
                           </div>
                         </div>
                       </div>
+                      {{#if name}}
+                      <div style="color: #939927;">
+                        Όνομα: <em> {{name}}</em> <br>
+                        Επώνυμο: <em>{{lname}}</em> <br>
+                        Πόντοι: <em>{{points}}</em>
+                      </div>
+
+                       {{/if}}
+
                 </div>
     
                 <div class="col-12 col-sm-4" >
                     <p class="phone-number" >
                       ΤΗΛΕΦΩΝΟ: <span > 0983 584994 2299</span>
                     </p>
-                    <div class="header-buttons">
-                      <button  class="btn-default"   >
-                        <a style="color:inherit; text-decoration: none;" href="?page=krathsh"> ΚΡΑΤΗΣΗ ONLINE  </a> 
-                     </button>
-                     <br>
-                     <button  class="btn-default"  >
-                         <a style="color:inherit; text-decoration: none;" href="?page=eggrafh">SIGN IN  </a>
-                     </button>
+                    <div class="header-buttons" style="margin-bottom:5px;">
+                        <button  class="btn-default"  style="margin-bottom: 3px;" >
+                           <a href="/krathsh"> ΚΡΑΤΗΣΗ ONLINE  </a> 
+                        </button>
+                        <br>
+                        
+                        {{#if userId}} 
+                        <a  style="color: #939927;" href="/logout">Αποσύνδεση</a>
+                        {{else}}
+                        <button  class="btn-default"  >
+                            {{!-- <a  href="?page=eggrafh">SIGN UP  </a> --}}
+                            <a  href="/eggrafh">SIGN UP  </a>
+                        </button><button id="log-in-button"  class="btn-default" style="margin-left: 5px;"  >
+                          <a href="/login">LOG IN </a> 
+                      </button>
+                        {{/if}}
+                      
+
     
                     </div>
     
@@ -70,7 +89,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto" >
                 <li class="nav-item active" >
-                  <a class="nav-link" style="color: white;"   href="?page=index"><i class="fa fa-fw fa-home"></i>Home
+                  <a class="nav-link" style="color: white;"   href="/index"><i class="fa fa-fw fa-home"></i>Home
                     <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item " >

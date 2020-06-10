@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="telformakrat\style.css">
+    <link rel="stylesheet" href="style/krathsh3_style.css">
     <title>Hotel Nadia</title>
 </head>
 
-<body style="background-image: url(telformakrat/telforma.jpeg); background-size: cover;">
+<body style="background-image: url(img/photo_krathsh3.jpg); background-size: cover;">
   <div class="sticky-top">
     <div class="header container-fluid "  >
       <div class="row"  >
           <div class="col-12 col-sm-4">
-          <a href="?page=index"><img src="img/logo2.png" alt="" ></a>
+          <a href="/index"><img src="img/logo2.png" alt="" ></a>
           </div>
           <div class="col-12 col-sm-4">
               <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
@@ -31,6 +31,14 @@
                     </div>
                   </div>
                 </div>
+                        {{#if userId}}
+                      <div style="color: #939927;">
+                        Όνομα: <em> {{name}}</em> <br>
+                        Επώνυμο: <em>{{lname}}</em> <br>
+                        Πόντοι: <em>{{points}}</em>
+                      </div>
+
+                       {{/if}} 
           </div>
 
           <div class="col-12 col-sm-4" >
@@ -40,9 +48,9 @@
               <div class="header-buttons">
 
                   <br>
-                  <button  class="btn-default"  >
-                      SIGN IN  
-                  </button>
+                        {{#if userId}} 
+                        <a  style="color: #939927;" href="/logout">Αποσύνδεση</a>
+                        {{/if}}
 
               </div>
 
@@ -50,6 +58,23 @@
       </div>
   </div>
   </div>
+
+
+{{!-- ~~~~~~~~~~~~~~~~  HIDDEN INPUTS ~~~~~~~~~~~~~~~ --}}
+
+<input id="hidden_userId" hidden type="number" value={{userId}}>
+<input type="date" id="startd" hidden value={{startd}}>
+<input type="date" id="endd" hidden value={{endd}}>
+
+
+<input id="epil_kathgories" hidden type="text" size="150" value={{epil_kathgories}} >
+<input id="epil_dwmatia" hidden type="text" value={{epil_dwmatia}} >
+<input id="epil_kosth" hidden+ type="text" value={{epil_kosth}} >
+
+
+
+{{!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --}}
+
     <h2 class="text-light" style="padding-left: 15px; padding-right: 15px;">
       Κάνε Κράτηση!
     </h2>
@@ -61,14 +86,14 @@
           <div class="row text-light bg-dark">
               <div class="col-lg-4 col-md-4 col-sm-6">
                 <label for="validationServer01">Όνομα</label>
-                <input type="text" class="form-control is-valid" id="validationServer01" placeholder="First name" value="Γιώργος" required>
+                <input type="text" class="form-control is-valid" id="form_onoma" placeholder="First name" value="Γιώργος" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
               </div>
               <div class="col-lg-4 col-md-4 col-sm-6">
                 <label for="validationServer02">Επίθετο</label>
-                <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Last name" value="Γεωργίου" required>
+                <input type="text" class="form-control is-valid" id="form_epwnymo" placeholder="Last name" value="Γεωργίου" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
@@ -79,7 +104,7 @@
             <div class="row text-light bg-dark">
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <label for="validationServer02">E-mail Διεύθυνση</label>
-                    <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="email address" required>
+                    <input type="text" class="form-control is-invalid" id="form_email" placeholder="email address" required>
                     <div class="invalid-feedback">
                         Please provide a valid email address.
                     </div>
@@ -92,7 +117,7 @@
                   <label for="validationServer02">Χώρα</label>
                     <div class="form-group">
                         <select class="custom-select" required>
-                          <option value="">Επιλέξτε μια Χώρα</option>
+                          <option id="form_xwra" value="">Επιλέξτε μια Χώρα</option>
                           <option value="1">Ελλάδα</option>
                           <option value="2">Κύπρος</option>
                           <option value="3">κλπ</option>
@@ -106,28 +131,28 @@
             <div class="row text-light bg-dark">
                 <div class="col-lg-3 col-md-3 col-sm-6">
                   <label for="validationServer02">Διεύθυνση</label>
-                  <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="Address" required>
+                  <input type="text" class="form-control is-invalid" id="form_onoma_addr" placeholder="Address" required>
                   <div class="invalid-feedback">
                     Please provide a valid Address.
                   </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6">
                   <label for="validationServer02">Αριθμός Διεύθυνσης</label>
-                  <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="Number" required>
+                  <input type="text" class="form-control is-invalid" id="form_arithmos_addr" placeholder="Number" required>
                   <div class="invalid-feedback">
                       Please provide a valid number.
                   </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6">
                   <label for="validationServer02">Πόλη</label>
-                  <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="City" value="" required>
+                  <input type="text" class="form-control is-invalid" id="form_polh" placeholder="City" value="" required>
                   <div class="invalid-feedback">
                       Please provide a valid City.
                   </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6">
                   <label for="validationServer02">T.K.</label>
-                  <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="T.K." required>
+                  <input type="text" class="form-control is-invalid" id="form_tk" placeholder="T.K." required>
                   <div class="invalid-feedback">
                       Please provide a valid T.K.
                   </div>
@@ -150,7 +175,7 @@
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6">
                     <label for="validationServer04">Τηλέφωνο</label>
-                    <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="Phone Number" required>
+                    <input type="text" class="form-control is-invalid" id="form_thlefwno" placeholder="Phone Number" required>
                     <div class="invalid-feedback">
                         Please provide a valid Phone Number.
                     </div>
@@ -240,18 +265,38 @@
 
         </div>
       </div>
+
+      </form>
       <div class="container">
         <div class="row text-light">
             <div class="col-lg-4 col-md-4 col-sm-6">
+
+              
+              <form id="telikh_forma" action="/final_form" method="POST">
               <button type="submit" class="btn btn-primary" style="background-color: #939927;">Κράτηση</button>
+              <input id="eggrafh_krathshs" name="attr_krathshs" type="text" value='' hidden>
+              {{!-- edw tha mpainoun hidden inputs analoga me to poses desmefsh_dwmatiou exei h krathsh --}}
+              
+            </form>
             </div>
         </div>
     </div>
-    </form>
+    
+
+
     <!-- div για col-sm-7 -->
     </div>
     <div class="col-sm-4 text-light bg-dark ">
-        Ποσό πληρωμής κλπ.<br>
+       <h4>Στοιχεία Κράτησης</h4>
+        <p>Ημε/νιες: <span id="hmeromhnies">{{startd}} - {{endd}} </span> <br> Διανυκτερεύσεις: <span id="bradia"></span></p>
+        <p>Άτομα: <span id="synolika_atoma">{{atoma}}</span> </p>
+        <p>Δωμάτια: <br>
+          <ol id="lista_dwmatiwn">
+
+          </ol>
+        </p>
+        <p>Συνολικό κόστος: <span id="synoliko_kostos"></span></p>
+
         4 ευρώ/βράδυ/δωμάτιο δεν περιλαμβάνεται στην κράτηση.<br>
         13.57%/βράδυ δεν περιλαμβάνεται στην κράτηση.<br>
         <h4>Επιπλέον χρεώσεις<br></h4>
@@ -271,6 +316,7 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="script/krathsh3.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

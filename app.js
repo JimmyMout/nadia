@@ -43,10 +43,23 @@ app.use(express.static('static'));
 app.use((req, res, next) => {
 
     res.locals.userId = req.session.loggedUserId;
+    res.locals.points = req.session.points;
     res.locals.name = req.session.name;
     res.locals.lname = req.session.lname;
     res.locals.noname = req.session.noname;
     res.locals.wrong = req.session.wrong;
+
+    //gia krathsh2
+    res.locals.atoma = req.session.atoma;
+    res.locals.startd = req.session.startd ;
+    res.locals.endd = req.session.endd ;
+
+    //gia krathsh3 
+    res.locals.epil_kathgories = req.session.epil_kathgories;
+    res.locals.epil_dwmatia = req.session.epil_dwmatia;
+    res.locals.epil_kosth = req.session.epil_kosth ;
+  
+    console.log("AFTA APOTHIKEYEI TO LOCALS",res.locals.epil_kathgories,res.locals.epil_dwmatia,res.locals.epil_kosth)
 
     next();
 })
