@@ -2,7 +2,16 @@
 
 const availableRooms = [];
 let db = require('../model/hotel-model-mysql');
+const e = require('express');
 
+exports.updateKrathshs = function(req,res) {
+    console.log(req.body.attr_krathshs);
+    console.log(req.body.dwmatia_desmefsh);
+
+    db.updateKrathshs(req.body.attr_krathshs,req.body.dwmatia_desmefsh.replace(/_/g, " "));
+    req.session.tropopoihsh_krathshs_id='';
+    res.redirect('/index');
+}
 
 
 exports.findRooms = function (req, res1) {
@@ -32,6 +41,61 @@ db.getAvailableRooms(req.query.startd ,req.query.endd ,(err,res)=>{
 
 }
 
+exports.tropopoihshKrathshs = function(req,res){
+    let id = req.body.krathsh_id ;
+    req.session.tropopoihsh_krathshs_id = id ;
+
+    console.log("AFTO EINAI TO ID THS KRATHSHS GIA TROPOPOIHSH", id);
+    // orismos locals tropopoihsh ,krath , id wste sto telos anti gia krathsh na kanw koumpi tropopoihsh
+    db.getStoixeiaKrathshs(id,(err,stoixeia)=>{
+        if(err){
+            console.log(err);
+        }
+        else{
+            console.log("ATFTA EPISTREFEI H BASH STO TROPOPOIHSH KRATHSHS",stoixeia);
+            // edw na dinei katallhles times sta locals gia userId , start date , end_date wste 
+            // otan paei sto krathsh 2 na emfanizontai ta stoixeia ths krathshs 
+            req.session.atoma = stoixeia[0].atoma ;
+            req.session.startd = stoixeia[0].start_date.slice(0,10) ;
+            req.session.endd = stoixeia[0].end_date.slice(0,10) ;
+            let array = [];
+            for( let i =1 ; i<stoixeia.length; i++ ){
+                array.push(stoixeia[i].id_kathgorias_dwm  + ':' +stoixeia[i].id_kathgorias + ':' + stoixeia[i].plhthos_dwmatiwn + ':' +stoixeia[i].xwrhtikothta)
+
+                            }
+            let str = array.join(',');
+            console.log("ETSI EINAI TA HDH EPILEGMENA ", str);
+            req.session.hdh_epilegmena = str ;      
+            console.log("ETSI EINAI TA HDH EPILEGMENA ",  req.session.hdh_epilegmena);
+            console.log("ETSI EINAI TA HDH EPILEGMENA ",  req.session.hdh_epilegmena);
+
+         res.redirect("/krathsh2");
+    }})
+    //res.send('hi');
+
+
+}
+
+exports.findKrathshByUserid = function (req,res){
+    // console.log("afta ftanoun sto neo handler ",req.params.obj[0],req.params.obj[1]);
+    console.log("afta ftanoun sto neo handler ",req.params.str);
+
+    let array = req.params.str.split(',');
+    console.log(array);
+
+db.findKrathshByUserid(array[0],array[1],array[2],(err,foundKrathsh)=>{
+    if(err){
+        console.log(err);
+    }
+    else{
+        console.log("afto eiani to foundKrathsh" ,foundKrathsh );
+        res.status(200).send(foundKrathsh);
+    }
+
+})
+
+}
+
 
 exports.krathsh2Render = function (req, res) {
 
@@ -39,6 +103,7 @@ req.session.atoma = Number(req.body.adults) + Number(req.body.kids) ;
 req.session.startd = req.body.tripStart ;
 req.session.endd = req.body.tripEnd ;
 
+console.log("HRTHAAAAAAAAAAAAAAAAAAAAAA");
 
 res.redirect("/krathsh2");
 // 2) Pernaei sto session - locals times pou tha tis xrhsimopoihsei h selida krathsh2.hbs sto 
@@ -88,7 +153,22 @@ exports.krathsh3 = function(req,res) {
 
     console.log( "AFTA PERNANE STA LOCALS",req.session.epil_kathgories,req.session.epil_dwmatia,req.session.epil_kosth);
     
-    res.redirect('/krathsh3');
+    
+    // let obj1={
+    //     val1:10,
+    //     val2:'hi all'
+    // };
+    // let obj2={
+    //     val1:20,
+    //     val2:'hello'
+    // };
+
+    // let obj ={
+    //     o1:obj1,
+    //     o2:obj2
+    // }
+    res.redirect('/krathsh3',);
+   // res.render('krathsh3',);
 
 }
 

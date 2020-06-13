@@ -16,7 +16,8 @@
     <div class="header container-fluid "  >
       <div class="row"  >
           <div class="col-12 col-sm-4">
-          <a href="?page=index"><img src="img/logo2.png" alt="" ></a>
+          
+          <a href="/index"><img src="img/logo2.png" alt="" ></a>
           </div>
           <div class="col-12 col-sm-4">
               <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
@@ -40,7 +41,7 @@
               </p>
               <div class="header-buttons">
                   <button  class="btn-default"  >
-                     <a  style="color:inherit; text-decoration: none;" href="?page=krathsh"> ΚΡΑΤΗΣΗ ONLINE  </a>
+                     <a  style="color:inherit; text-decoration: none;" href="/krathsh"> ΚΡΑΤΗΣΗ ONLINE  </a>
                   </button>
 
 
@@ -58,17 +59,17 @@
       <div class="row text-light">
           <div class="col-lg-4 col-md-4 col-sm-6">
             <label for="validationServer01">Όνομα</label>
-            <input type="text" class="form-control is-valid" name="onoma" id="validationServer01" placeholder="First name" value="Γιώργος" required>
-            <div class="valid-feedback">
+            <input type="text" class="form-control is-valid" name="onoma" id="validationServer01" placeholder="First name" value="" required>
+            {{!-- <div class="valid-feedback">
                 Looks good!
-            </div>
+            </div> --}}
           </div>
           <div class="col-lg-4 col-md-4 col-sm-6">
             <label for="validationServer02">Επίθετο</label>
-            <input type="text" class="form-control is-valid" name="epwnymo" id="validationServer02" placeholder="Last name" value="Γεωργίου" required>
-            <div class="valid-feedback">
+            <input type="text" class="form-control is-valid" name="epwnymo" id="validationServer02" placeholder="Last name" value="" required>
+            {{!-- <div class="valid-feedback">
                 Looks good!
-            </div>
+            </div> --}}
           </div>
       </div>
     </div>
@@ -76,16 +77,16 @@
         <div class="row text-light">
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <label for="validationServer03">E-mail Διεύθυνση</label>
-                <input type="email" class="form-control is-invalid" name="email" id="validationServer03" placeholder="email address" required>
-                <div class="invalid-feedback">
-                    Please provide a valid email address.
+                <input type="email" class="form-control  " name="email" id="inputEmail" placeholder="email address" required>
+                <div class="container" id="uniqueemaildiv" style="border-radius:5px; background-color:rgba(64, 224, 208, 0.904)" hidden>
+                  Αυτό το Email Χρησιμοποιείται ήδη! Δοκιμάστε άλλο !
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <label for="validationServer03">Όνομα Χρήστη</label>
-                <input type="text" class="form-control is-invalid" name="username" id="validationServer03" placeholder="π.χ. geiasoukoritsaki" required>
-                <div class="invalid-feedback">
-                    Please provide a valid username.
+                <input type="text" class="form-control  " name="username" id="username" placeholder="Όνομα Χρήστη" required>
+                <div class="container" id="uniqueusernamediv" style="border-radius:5px; background-color:rgba(64, 224, 208, 0.904)" hidden>
+                  Αυτό το Username Χρησιμοποιείται ήδη! Δοκιμάστε άλλο !
                 </div>
             </div>
         </div>
@@ -94,17 +95,17 @@
         <div class="row text-light">
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <label for="validationServer04">Κωδικός</label>
-                <input type="password" class="form-control is-invalid" name="password" id="validationServer04" placeholder="password" required>
-                <div class="invalid-feedback">
+                <input type="password" class="form-control  " name="password" id="validationServer04" placeholder="password" required>
+                {{!-- <div class="invalid-feedback">
                     Please provide a valid password.
-                </div>
+                </div> --}}
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <label for="validationServer05">Επιβεβαίωση Κωδικού</label>
-                <input type="password" class="form-control is-invalid" id="validationServer05" placeholder="password" required>
-                <div class="invalid-feedback">
+                <input type="password" class="form-control  " id="validationServer05" placeholder="password" required>
+                {{!-- <div class="invalid-feedback">
                     Please provide a valid password.
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -119,7 +120,7 @@
                       <option value="Κύπρος">Κύπρος</option>
                       <option value="Άλλο">κλπ</option>
                     </select>
-                    <div class="invalid-feedback">Example invalid custom select feedback</div>
+                    {{!-- <div class="invalid-feedback">Example invalid custom select feedback</div> --}}
                   </div>
             </div>
         </div>
@@ -128,31 +129,31 @@
         <div class="row text-light">
             <div class="col-lg-3 col-md-3 col-sm-6">
               <label for="validationServer07">Διεύθυνση</label>
-              <input type="text" class="form-control is-invalid" name="onoma_addr" id="validationServer07" placeholder="Address" required>
-              <div class="invalid-feedback">
+              <input type="text" class="form-control  " name="onoma_addr" id="validationServer07" placeholder="Address" required>
+              {{!-- <div class="invalid-feedback">
                 Please provide a valid Address.
-              </div>
+              </div> --}}
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6">
               <label for="validationServer08">Αριθμός Διεύθυνσης</label>
-              <input type="text" class="form-control is-invalid" name="arithmos_addr" id="validationServer08" placeholder="Number" required>
-              <div class="invalid-feedback">
+              <input type="text" class="form-control  " name="arithmos_addr" id="validationServer08" placeholder="Number" required>
+              {{!-- <div class="invalid-feedback">
                   Please provide a valid number.
-              </div>
+              </div> --}}
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6">
               <label for="validationServer09">Πόλη</label>
-              <input type="text" class="form-control is-invalid" id="validationServer09" placeholder="City" value="" required>
-              <div class="invalid-feedback">
+              <input type="text" class="form-control  " name="polh" id="validationServer09" placeholder="City" value="" required>
+              {{!-- <div class="invalid-feedback">
                   Please provide a valid City.
-              </div>
+              </div> --}}
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6">
               <label for="validationServer10">T.K.</label>
-              <input type="text" class="form-control is-invalid" name="tk" id="validationServer10" placeholder="T.K." required>
-              <div class="invalid-feedback">
+              <input type="text" class="form-control  " name="tk" id="validationServer10" placeholder="T.K." required>
+              {{!-- <div class="invalid-feedback">
                   Please provide a valid T.K.
-              </div>
+              </div> --}}
             </div>
         </div>
     </div>
@@ -183,13 +184,14 @@
     <div class="container">
       <div class="row text-light">
           <div class="col-lg-4 col-md-4 col-sm-6">
-            <button type="submit" class="btn btn-primary" style="background-color: #939927;">Sign in</button>
+            <button type="submit" class="btn btn-primary" style="background-color: #939927;">Sign Up</button>
           </div>
       </div>
   </div>
 </form>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="script/username.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

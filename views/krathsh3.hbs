@@ -7,6 +7,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style/krathsh3_style.css">
+    <link rel="stylesheet" href="style.css">
+
     <title>Hotel Nadia</title>
 </head>
 
@@ -14,47 +16,67 @@
   <div class="sticky-top">
     <div class="header container-fluid "  >
       <div class="row"  >
-          <div class="col-12 col-sm-4">
+          <div class="col-3 col-sm-1">
           <a href="/index"><img src="img/logo2.png" alt="" ></a>
           </div>
-          <div class="col-12 col-sm-4">
-              <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                  <div class="btn-group" role="group">
-                    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" 
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                     >
-                      Ελληνικά
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                      <a class="dropdown-item" href="">Ελληνικά</a>
-                      <a class="dropdown-item" href="">English</a>
-                    </div>
-                  </div>
-                </div>
-                        {{#if userId}}
+                          <div class="col-3 col-sm-4" style="font-size: larger;">
+                       {{#if userId}}
                       <div style="color: #939927;">
                         Όνομα: <em> {{name}}</em> <br>
                         Επώνυμο: <em>{{lname}}</em> <br>
                         Πόντοι: <em>{{points}}</em>
                       </div>
 
-                       {{/if}} 
-          </div>
+                       {{/if}}                 
+                </div>
+                <div class="col-3 col-sm-3">
+                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                        <div class="btn-group" role="group">
+                          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" 
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                           >
+                            Ελληνικά
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            <a class="dropdown-item" href="">Ελληνικά</a>
+                            <a class="dropdown-item" href="">English</a>
+                          </div>
+                        </div>
+                      </div>
 
-          <div class="col-12 col-sm-4" >
-              <p class="phone-number" >
-                ΤΗΛΕΦΩΝΟ: <span > 0983 584994 2299</span>
-              </p>
-              <div class="header-buttons">
 
-                  <br>
+                </div>
+    
+                <div class="col-3 col-sm-3" >
+                    <p class="phone-number" style="display: inline;">
+                      ΤΗΛΕΦΩΝΟ: <span > 0983 584994 2299</span>
+                    </p>
+                    <div class="header-buttons" style="margin-bottom:2px;">
+                        <button  class="btn-default"  style="margin-bottom: 3px;" >
+                           <a href="/krathsh"> ΚΡΑΤΗΣΗ ONLINE  </a> 
+                        </button>
+                        <br>
+                        
                         {{#if userId}} 
+                        <form action="/istoriko" method="POST" style="display:inline;">
+                        <input type="text" name="userId" value="{{userId}}" hidden>
+                        <button type="submit"  style=" color: black;" >Ιστορικό </button> 
+                        </form>
                         <a  style="color: #939927;" href="/logout">Αποσύνδεση</a>
+                        {{else}}
+                        <button  class="btn-default"  >
+                            {{!-- <a  href="?page=eggrafh">SIGN UP  </a> --}}
+                            <a  href="/eggrafh">SIGN UP  </a>
+                        </button><button id="log-in-button"  class="btn-default" style="margin-left: 5px;"  >
+                          <a href="/login">LOG IN </a> 
+                      </button>
                         {{/if}}
+                      
 
-              </div>
-
-          </div>
+    
+                    </div>
+    
+      </div>
       </div>
   </div>
   </div>
@@ -62,14 +84,18 @@
 
 {{!-- ~~~~~~~~~~~~~~~~  HIDDEN INPUTS ~~~~~~~~~~~~~~~ --}}
 
-<input id="hidden_userId" hidden type="number" value={{userId}}>
-<input type="date" id="startd" hidden value={{startd}}>
-<input type="date" id="endd" hidden value={{endd}}>
+<input hidden  id="hidden_userId"  type="number" value={{userId}}>
+<input hidden type="date" id="startd" data-date={{startd}}  value="{{startd}}">
+<input hidden type="date" id="endd" data-date={{endd}}  value="{{endd}}">
 
 
-<input id="epil_kathgories" hidden type="text" size="150" value={{epil_kathgories}} >
-<input id="epil_dwmatia" hidden type="text" value={{epil_dwmatia}} >
-<input id="epil_kosth" hidden+ type="text" value={{epil_kosth}} >
+<input hidden id="epil_kathgories"  type="text" size="150" value={{epil_kathgories}} >
+<input hidden id="epil_dwmatia"  type="text" value={{epil_dwmatia}} >
+<input hidden id="epil_kosth"  type="text" value={{epil_kosth}} >
+
+<input hidden id="atoma"  type="text" value={{atoma}} >
+<input hidden type="text"  id="tropopoihsh_krathshs_id" value={{tropopoihsh_krathshs_id}}>
+
 
 
 
@@ -87,16 +113,16 @@
               <div class="col-lg-4 col-md-4 col-sm-6">
                 <label for="validationServer01">Όνομα</label>
                 <input type="text" class="form-control is-valid" id="form_onoma" placeholder="First name" value="Γιώργος" required>
-                <div class="valid-feedback">
+                {{!-- <div class="valid-feedback">
                     Looks good!
-                </div>
+                </div> --}}
               </div>
               <div class="col-lg-4 col-md-4 col-sm-6">
                 <label for="validationServer02">Επίθετο</label>
                 <input type="text" class="form-control is-valid" id="form_epwnymo" placeholder="Last name" value="Γεωργίου" required>
-                <div class="valid-feedback">
+                {{!-- <div class="valid-feedback">
                     Looks good!
-                </div>
+                </div> --}}
               </div>
           </div>
         </div>
@@ -104,10 +130,10 @@
             <div class="row text-light bg-dark">
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <label for="validationServer02">E-mail Διεύθυνση</label>
-                    <input type="text" class="form-control is-invalid" id="form_email" placeholder="email address" required>
-                    <div class="invalid-feedback">
+                    <input type="text" class="form-control  " id="form_email" placeholder="email address" required>
+                    {{!-- <div class="invalid-feedback">
                         Please provide a valid email address.
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -117,12 +143,12 @@
                   <label for="validationServer02">Χώρα</label>
                     <div class="form-group">
                         <select class="custom-select" required>
-                          <option id="form_xwra" value="">Επιλέξτε μια Χώρα</option>
+                          <option id="form_xwra" value=""></option>
                           <option value="1">Ελλάδα</option>
                           <option value="2">Κύπρος</option>
                           <option value="3">κλπ</option>
                         </select>
-                        <div class="invalid-feedback">Example invalid custom select feedback</div>
+                        {{!-- <div class="invalid-feedback">Example invalid custom select feedback</div> --}}
                       </div>
                 </div>
             </div>
@@ -131,31 +157,31 @@
             <div class="row text-light bg-dark">
                 <div class="col-lg-3 col-md-3 col-sm-6">
                   <label for="validationServer02">Διεύθυνση</label>
-                  <input type="text" class="form-control is-invalid" id="form_onoma_addr" placeholder="Address" required>
-                  <div class="invalid-feedback">
+                  <input type="text" class="form-control  " id="form_onoma_addr" placeholder="Address" required>
+                  {{!-- <div class="invalid-feedback">
                     Please provide a valid Address.
-                  </div>
+                  </div> --}}
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6">
-                  <label for="validationServer02">Αριθμός Διεύθυνσης</label>
-                  <input type="text" class="form-control is-invalid" id="form_arithmos_addr" placeholder="Number" required>
-                  <div class="invalid-feedback">
+                  <label for="validationServer02">Αρ. Διεύθυνσης</label>
+                  <input type="text" class="form-control  " id="form_arithmos_addr" placeholder="Number" required>
+                  {{!-- <div class="invalid-feedback">
                       Please provide a valid number.
-                  </div>
+                  </div> --}}
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6">
                   <label for="validationServer02">Πόλη</label>
-                  <input type="text" class="form-control is-invalid" id="form_polh" placeholder="City" value="" required>
-                  <div class="invalid-feedback">
+                  <input type="text" class="form-control  " id="form_polh" placeholder="City" value="" required>
+                  {{!-- <div class="invalid-feedback">
                       Please provide a valid City.
-                  </div>
+                  </div> --}}
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6">
                   <label for="validationServer02">T.K.</label>
-                  <input type="text" class="form-control is-invalid" id="form_tk" placeholder="T.K." required>
-                  <div class="invalid-feedback">
+                  <input type="text" class="form-control  " id="form_tk" placeholder="T.K." required>
+                  {{!-- <div class="invalid-feedback">
                       Please provide a valid T.K.
-                  </div>
+                  </div> --}}
                 </div>
             </div>
         </div>
@@ -170,15 +196,15 @@
                           <option value="2">Κύπρος +357</option>
                           <option value="3">κλπ</option>
                         </select>
-                        <div class="invalid-feedback">Example invalid custom select feedback</div>
-                      </div>
+                        {{!-- <div class="invalid-feedback">Example invalid custom select feedback</div> --}}
+                      </div> 
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6">
                     <label for="validationServer04">Τηλέφωνο</label>
-                    <input type="text" class="form-control is-invalid" id="form_thlefwno" placeholder="Phone Number" required>
-                    <div class="invalid-feedback">
+                    <input type="text" class="form-control  " id="form_thlefwno" placeholder="Phone Number" required>
+                    {{!-- <div class="invalid-feedback">
                         Please provide a valid Phone Number.
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -212,16 +238,16 @@
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <h3>Τρόπος πληρωμής!<br></h3>
                 Κράτηση μέσω πιστοτικής/χρεωστικής κάρτας.<br>
-                Η κράτησή σας θα ισχύσει μέχρι την άφιξή σας την ημέρα του check-in.<br>
+                Έχετε την δυνατότητα να ακυρώσετε την κράτησή σας μέχρι την ώρα CHECK IN της προηγούμενης ημέρας!<br>
             </div>
         </div>
         <div class="container row text-light">
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <label for="validationServer02">Αριθμός Κάρτας</label>
-                <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="Number" required>
-                <div class="invalid-feedback">
+                <input type="text" class="form-control  " id="validationServer03" placeholder="Number" required>
+                {{!-- <div class="invalid-feedback">
                     Please provide a valid Card Number.
-                </div>
+                </div> --}}
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6">
                 <label for="validationServer03">Ημερομηνία Λήξης Κάρτας</label>
@@ -258,7 +284,7 @@
                           <option value="10">2029</option>
                           <option value="11">2030</option>
                         </select>
-                        <div class="invalid-feedback">Example invalid custom select feedback</div>
+                        {{!-- <div class="invalid-feedback">Example invalid custom select feedback</div> --}}
                       </div>
               </div>
 
@@ -272,12 +298,26 @@
             <div class="col-lg-4 col-md-4 col-sm-6">
 
               
-              <form id="telikh_forma" action="/final_form" method="POST">
-              <button type="submit" class="btn btn-primary" style="background-color: #939927;">Κράτηση</button>
+              
+              {{#if tropopoihsh_krathshs_id}}
+              <form id="telikh_forma" action="/final_form_tropopoihsh" method="POST"> 
+              <button type="submit" class="btn btn-primary" style="background-color: #939927;">Τροποποίηση</button>
               <input id="eggrafh_krathshs" name="attr_krathshs" type="text" value='' hidden>
               {{!-- edw tha mpainoun hidden inputs analoga me to poses desmefsh_dwmatiou exei h krathsh --}}
               
             </form>
+                {{else}}
+               <form id="telikh_forma" action="/final_form" method="POST"> 
+              <button type="submit" class="btn btn-primary" style="background-color: #939927;">Κράτηση</button>
+                <input id="eggrafh_krathshs" name="attr_krathshs" type="text" value='' hidden>
+              {{!-- edw tha mpainoun hidden inputs analoga me to poses desmefsh_dwmatiou exei h krathsh --}}
+              
+            </form>
+              {{/if}}
+              {{!-- <input id="eggrafh_krathshs" name="attr_krathshs" type="text" value='' hidden> --}}
+              {{!-- edw tha mpainoun hidden inputs analoga me to poses desmefsh_dwmatiou exei h krathsh --}}
+               
+            
             </div>
         </div>
     </div>
@@ -287,28 +327,34 @@
     <!-- div για col-sm-7 -->
     </div>
     <div class="col-sm-4 text-light bg-dark ">
-       <h4>Στοιχεία Κράτησης</h4>
-        <p>Ημε/νιες: <span id="hmeromhnies">{{startd}} - {{endd}} </span> <br> Διανυκτερεύσεις: <span id="bradia"></span></p>
-        <p>Άτομα: <span id="synolika_atoma">{{atoma}}</span> </p>
-        <p>Δωμάτια: <br>
-          <ol id="lista_dwmatiwn">
+       <h3>Στοιχεία Κράτησης</h3>
+        
+         <h4 style="display: inline-block;"> Ημε/νιες:</h4> <span id="hmeromhnies">{{startd}} εώς {{endd}} </span> <br>
+         <h4 style="display: inline-block;"> Διανυκτερεύσεις:</h4> <span id="bradia"></span> <br>
+         <h4 style="display: inline-block;">Άτομα: </h4> <span id="synolika_atoma">{{atoma}}</span> 
+        <p><h4>Δωμάτια: </h4>
+          <ul id="lista_dwmatiwn">
 
-          </ol>
+          </ul>
         </p>
-        <p>Συνολικό κόστος: <span id="synoliko_kostos"></span></p>
+        <h4>Συνολικό κόστος: <span id="synoliko_kostos"></span> &euro;</h4> <br> 
+        <div style="border-radius:5px; background-color: rgba(151, 226, 224, 0.836);">
+          Εξαργύρωσε 5000 πόντους για έκπτωση 15% στο συνολικό κόστος της κράτησής σου !
+          <button class="btn" disabled style="margin-left:120px;; background-color: rgb(8, 151, 146);" >Εξαργύρωση</button>
 
+           </div>
+        <h4>Οι Πόντοι που κερδίζεται: <span id="pontoi"></span> </h4> <br><br>
+
+
+        <h4>Επιπλέον χρεώσεις:</h4>
         4 ευρώ/βράδυ/δωμάτιο δεν περιλαμβάνεται στην κράτηση.<br>
         13.57%/βράδυ δεν περιλαμβάνεται στην κράτηση.<br>
-        <h4>Επιπλέον χρεώσεις<br></h4>
         Θέση Parking: 21 ευρώ.<br>
-        <h4>Γενικοί κανόνες<br></h4>
-        3 άτομε μέγιστο σε κάθε δωμάτιο<br>
+        <br><br>
+        <h4>Γενικοί κανόνες:</h4>
         Δεν επιτρέπονται κατοικίδια.<br>
-        check-in: 2 Μ.Μ.<br>
-        check-out: 12 Μ.Μ.<br>
-
-
-
+        CHECK-IN: 2 Μ.Μ.<br>
+        CHECK-OUT: 12 Μ.Μ.<br>
 
     </div>
     <!-- div για τις στήλες -->

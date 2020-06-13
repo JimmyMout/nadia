@@ -14,6 +14,30 @@ const userModel = require('../model/user-model');
 //     res.render('register', {});
 // }
 
+exports.usernameMatch = function(req,res){
+    console.log("EFTASA STO USERNAME");
+    userModel.checkUniqueUsername(req.params.username,(err,unique)=>{
+        if(err){
+            console.log(err);
+        }
+        else{
+
+            res.status(200).send(unique);
+        }
+    })
+}
+exports.CheckUniqueEmail = function(req,res){
+    userModel.checkUniqueEmailUser(req.params.email,(err,unique)=>{
+        if(err){
+            console.log(err);
+        }
+        else{
+
+            res.status(200).send(unique);
+        }
+    })
+}
+
 exports.doRegister = function (req, res) {
     userModel.registerUser(req.body.username, req.body.password, (err, result) => {
         if (err) {
@@ -121,7 +145,7 @@ exports.doLogin = function (req, res, authenticated) {
 exports.doLogout = (req, res) => {
     //Σημειώνουμε πως ο χρήστης δεν είναι πια συνδεδεμένος
     req.session.destroy();
-    res.redirect('/');
+    res.redirect('/index');
 }
 
 //Τη χρησιμοποιούμε για να ανακατευθύνουμε στη σελίδα /login όλα τα αιτήματα από μη συνδεδεμένςου χρήστες
@@ -162,9 +186,9 @@ exports.newUser=async function(req,res,callback){
     try{
         console.log(req.body.password);
     const hashedPassword1 = await bcrypt.hash(req.body.password, 10);
-        let newUser = new userModel.User(req.body.onoma, req.body.epwnymo, req.body.email, req.body.username, hashedPassword1, req.body.xwra, req.body.onoma_addr, req.body.arithmos_addr, req.body.tk);
+        let newUser = new userModel.User(req.body.onoma, req.body.epwnymo, req.body.email, req.body.username, hashedPassword1, req.body.xwra,req.body.polh, req.body.onoma_addr, req.body.arithmos_addr, req.body.tk);
         db.putInBase(newUser);
-        res.redirect("/index");
+        res.redirect("/login");
         callback(false, true);
         }catch (error) {
             callback(error);

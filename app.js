@@ -58,8 +58,13 @@ app.use((req, res, next) => {
     res.locals.epil_kathgories = req.session.epil_kathgories;
     res.locals.epil_dwmatia = req.session.epil_dwmatia;
     res.locals.epil_kosth = req.session.epil_kosth ;
+
+    // gia tropopoihsh
+    res.locals.tropopoihsh_krathshs_id = req.session.tropopoihsh_krathshs_id
+    res.locals.hdh_epilegmena = req.session.hdh_epilegmena  ;
+    console.log("STO APP TO HDH EPILEGMENA ",res.locals.hdh_epilegmena);
   
-    console.log("AFTA APOTHIKEYEI TO LOCALS",res.locals.epil_kathgories,res.locals.epil_dwmatia,res.locals.epil_kosth)
+   // console.log("AFTA APOTHIKEYEI TO LOCALS",res.locals.epil_kathgories,res.locals.epil_dwmatia,res.locals.epil_kosth)
 
     next();
 })

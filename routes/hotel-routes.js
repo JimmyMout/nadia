@@ -11,9 +11,8 @@ const hotelPagesControler = require('../controller/hotel-pages-controller');
 //Για την υποστήριξη σύνδεσης/αποσύνδεσης χρηστών
 const logInController = require('../controller/log-in-controller');
 const krathshController = require('../controller/krathsh-controller');
-
 const hotelIstorikoControler = require('../controller/hotel-istoriko-controller');
-router.route('/istoriko').get(hotelIstorikoControler.hotelIstorikoRender);
+
 //Καταχώριση συμπεριφοράς σε διάφορα URL
 
 //Αυτό το URL τα χρησιμοποιεί η σελίδα που φτιάχνεται από την tasks.hbs
@@ -33,27 +32,34 @@ router.route('/login').get(logInController.checkNotAuthenticated,hotelPagesContr
 router.route('/krathsh').get(logInController.checkAuthenticated,hotelPagesControler.renderKrathsh);
 router.route('/krathsh2').get(logInController.checkAuthenticated,hotelPagesControler.renderKrathsh2);
 router.route('/krathsh3').get(logInController.checkAuthenticated,hotelPagesControler.renderKrathsh3);
-
+router.route('/istoriko').post(logInController.checkAuthenticated,hotelIstorikoControler.hotelIstorikoRender);
 
 router.route('/').get(hotelPagesControler.renderIndex);
 
-router.route('/login').post(logInController.doLogin);
-router.route('/logout').get(logInController.doLogout);
+router.route('/login').post(logInController.checkNotAuthenticated,logInController.doLogin);
+router.route('/logout').get(logInController.checkAuthenticated,logInController.doLogout);
 
 
 router.route('/eggrafh_user').post(logInController.newUser)
 
-router.route('/fetchRooms').get(krathshController.findRooms); //EDW THELEI ALLAGH GIATI EXOUME 2 IDIA ROUTE REQUEST HANDLER
+router.route('/fetchRooms').get(krathshController.findRooms); 
 
-router.route('/krathsh2Render').post(krathshController.krathsh2Render);
-
+router.route("/RenderKrathsh2").post(krathshController.krathsh2Render);
 
 router.route('/krathsh3').post(krathshController.krathsh3);
 
 router.route('/user').get(krathshController.findUserById);
 
 router.route('/final_form').post(krathshController.kataxwrhseKrathsh);
+router.route('/final_form_tropopoihsh').post(krathshController.updateKrathshs);
 
+
+router.get("/FindKrathseisByUserid/:str",krathshController.findKrathshByUserid);
+router.get("/username/:username",logInController.usernameMatch);
+router.get("/uniqueEmail/:email",logInController.CheckUniqueEmail);
+
+router.route('/tropopoihsh').post(logInController.checkAuthenticated,krathshController.tropopoihshKrathshs);
+router.route('/akyrwsh').post(logInController.checkAuthenticated,hotelIstorikoControler.akyrwshKrathshs);
 
 //Αιτήματα για σύνδεση
 //Δείξε τη φόρμα

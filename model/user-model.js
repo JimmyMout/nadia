@@ -19,13 +19,56 @@ exports.getUserByUsername = function (username, result){
     });
 }
 
-exports.User = function (Newonoma, Newepwnymo, Newemail, Newusername, Newpassword, Newxwra, Newonoma_addr, Newarithmos_addr, Newtk, Newuserid = '', Newpoints = 200) {
+exports.checkUniqueEmailUser = function(email,result){
+    let unique ;
+    sql.query("select * from user where email = ?",email,(err,res)=>{
+        if(err){
+            console.log(err);
+        }
+        else{
+            console.log("Afto br;hhke to user model" , res.length)
+            if(res.length == 0){
+                unique = true;
+            }
+            else{
+                unique = false ;
+            }
+            console.log("to unique einai:",unique);
+            result(null,unique);
+        }
+    })
+
+}
+
+exports.checkUniqueUsername = function(name,result){
+    let unique ;
+    sql.query("select * from user where username = ?",name,(err,res)=>{
+        if(err){
+            console.log(err);
+        }
+        else{
+            console.log("Afto br;hhke to user model" , res.length)
+            if(res.length == 0){
+                unique = true;
+            }
+            else{
+                unique = false ;
+            }
+            console.log("to unique einai:",unique);
+            result(null,unique);
+        }
+    })
+
+}
+
+exports.User = function (Newonoma, Newepwnymo, Newemail, Newusername, Newpassword, Newxwra,Newpolh, Newonoma_addr, Newarithmos_addr, Newtk, Newuserid = '', Newpoints = 200) {
     this.onoma = Newonoma;
     this.epwnymo = Newepwnymo;
     this.email = Newemail;
     this.username = Newusername;
     this.password = Newpassword;
     this.xwra = Newxwra;
+    this.polh = Newpolh ;
     this.onoma_addr = Newonoma_addr;
     this.arithmos_addr = Newarithmos_addr;
     this.tk = Newtk;

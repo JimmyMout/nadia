@@ -5,10 +5,7 @@ let plus = document.querySelectorAll("#plus");
 let filters = document.querySelectorAll(".search");
 console.log(filters);
 
-let but_search = document.querySelector("button.search1");
-but_search.onclick = function(){
-    location.href="/krathsh2";
-}
+
 
 
 for(i of minus){
@@ -16,7 +13,7 @@ for(i of minus){
 
 i.onclick = function(){
     let parent = this.parentElement ;
-    if(parent.childNodes[5].value >0 ){
+    if(parent.childNodes[5].value >1 ){
         parent.childNodes[5].value--;
     }
 
@@ -58,16 +55,54 @@ for(i of filters){
 }
 
 let setAcceptableDates = function(){
-    let today = new Date().toISOString().slice(0, 10);
-    console.log(today + 2);
+    let today = new Date() //.toISOString().slice(0, 10);
+    today.setDate(today.getDate() + 2);
+    todayStr = today.toISOString().slice(0,10);
+
     let startd = document.querySelector('#start');
-    startd.min = today;
+    startd.min = todayStr;
     
     let endd = document.querySelector('#end');
 
     endd.onfocus = function(){
         let val = startd.value
-        endd.min=val ;
+        console.log("bhma1",val);
+
+        let date = new Date(val);
+        console.log("bhma2",date);
+
+        date.setDate(date.getDate() + 1);
+        console.log("bhma3",date);
+
+        let newDate = date.toISOString().slice(0, 10);
+        console.log("bhma4",newDate);
+        endd.min=newDate ;
+    }
+
+    endd.onblur = function(){
+        // elegxos an exei o user alles krathseis stis hmeromhnies poy eishgage 
+ 
+        let str = "" + document.querySelector("#start").value +',' + document.querySelector("#end").value +',' + document.querySelector("#userId").value ;
+        fetch("/findKrathseisByUserid/" + str).then(
+            (lol)=> 
+                lol.json().then(
+                    (lol)=>
+                     {console.log("afto hrthe",lol);
+                     if(lol){
+                         // set div visible
+                         document.querySelector("#foundKrathsh").removeAttribute("hidden");
+                     }
+                     else{
+                        // set div hidden
+                        document.querySelector("#foundKrathsh").setAttribute("hidden","true");
+
+                     }
+
+                
+                }
+                )
+            
+        )
     }
 }
 

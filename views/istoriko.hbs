@@ -44,7 +44,7 @@
                     </p>
                     <div class="header-buttons" style="margin-bottom:5px;">
                         <button  class="btn-default"  style="margin-bottom: 3px;" >
-                           <a href="/?page=krathsh"> ΚΡΑΤΗΣΗ ONLINE  </a> 
+                           <a href="/krathsh"> ΚΡΑΤΗΣΗ ONLINE  </a> 
                         </button>
                         <br>
                         
@@ -140,46 +140,47 @@
   {{#each plhrof}}
       <div class="card col-12 col-md-4 col-sm-6" style="width:450px; border-color: green; padding: 0px;">
         <img class="card-img-top" src="img\istoriko.jpg" alt="Card image">
-        <div class="card-img-overlay">
-          <h6 class="card-title">{{start_date}}-{{end_date}}</h6>
+        <div class="card-img-overlay" style="padding-left: 10px; padding-right: 10px;">
+          <h6 class="card-title">{{start_date}} έως{{end_date}}</h6>
           <p class="card-text">{{kostos}}€</p>
           {{#if katastash}}
-            <a href="" class="btn btn-info">Ακύρωση</a>
+            <div class="btn-group">
+              <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #939927;">
+                Ακύρωση
+              </button>
+              <div class="dropdown-menu" style="width: 300px;">
+                <div class="card text-white bg-dark mb-3 text-center" style="max-width: 18rem;">
+                  <div class="card-header">Είστε σίγουροι για την ακύρωση;</div>
+                  <div class="card-body">
+                  {{!-- <h5 class="card-title">Dark card title</h5> --}}
+                    <p class="card-text">Η ακύρωση θα είναι μόνιμη και ΔΕΝ θα καραχωρηθούν οι πόντοι της κράτησης. </p>
+                  </div>
+                  <div class="card-footer">
+                    <form action="/akyrwsh" method="POST" style="display: inline;">
+                      <input type="text" name="krathsh_id" value="{{id}}" hidden>
+                      <button  class="btn btn-info" type="submit" style="background-color:#939927" >Ακύρωση</button>
+                      </form>
+                    {{!-- <a href="\akyrwsh?krathsh_id={{id}}" class="btn " style="background-color:#939927">Ακύρωση</a> --}}
+                  </div>
+                </div>
+
+
+
+              </div>
+            </div>
+              <form action="/tropopoihsh" method="POST" style="display: inline;">
+              <input type="text" name="krathsh_id" value="{{id}}" hidden>
+            <button  class="btn btn-info" type="submit" style="background-color:#939927" >Τροποποίηση</button>
+            </form>
+          {{else}}
+          <div class="text-dark">Ευχαριστούμε για την διαμονή σας!</div>
           {{/if}}
         </div>
       </div>
   {{/each}}
 
-{{!-- <div class="card col-12 col-md-4 col-sm-6" style="width:450px; border-color: green; padding: 0px;">
-    <img class="card-img-top" src="img\mikrh.jpg" alt="Card image">
-    <div class="card-img-overlay">
-        <h4 class="card-title">26/6/2020-28/6/2020</h4>
-        <p class="card-text">485€</p>
-        <a href="https://up1020048.z6.web.core.windows.net/istorikoper" class="btn btn-info">Περισσότερα</a>
-    </div>
-</div>
-
-<div class="card col-12 col-md-4 col-sm-6" style="width:450px; border-color: red; padding: 0px;">
-    <img class="card-img-top" src="img\mikrh.jpg" alt="Card image">
-    <div class="card-img-overlay">
-        <h4 class="card-title">23/2/2019-28/2/2019</h4>
-        <p class="card-text">885€</p>
-        <a href="https://up1020048.z6.web.core.windows.net/istorikoperneg" class="btn btn-info">Περισσότερα</a>
-    </div>
-</div>
-
-<div class="card col-12 col-md-4 col-sm-6" style="width:450px; border-color: red; padding: 0px;">
-    <img class="card-img-top" src="img\mikrh.jpg" alt="Card image">
-    <div class="card-img-overlay">
-        <h4 class="card-title">23/2/2019-28/2/2019</h4>
-        <p class="card-text">885€</p>
-        <a href="#" class="btn btn-info">Περισσότερα</a>
-    </div>
-</div> --}}
 
 </div>
-
-
 <!-- -------------------------------start of footer------------------------ -->
 <hr style=" margin:0px; border:0px; height:5px; background-color:#939927; ">
   <div class="footer"  >
@@ -272,6 +273,7 @@
 </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="script/tropopoihshKrathshs" defer></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
