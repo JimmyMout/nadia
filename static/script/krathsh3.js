@@ -75,8 +75,8 @@ let renderStoixeiaKrathshs = function (){
     krathsh += '1,'; // katastash 
 
     krathsh += 'pistwtikh'+',' ;
-    krathsh += document.querySelector("#atoma").value;
-    krathsh += pontoi ;
+    krathsh += document.querySelector("#atoma").value + ',';
+    krathsh += pontoi  ;
 
     console.log("oloklhrh h krathsh kai grafetai sto teliko input", krathsh);
     document.querySelector("#eggrafh_krathshs").value = krathsh ;

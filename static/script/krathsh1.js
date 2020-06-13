@@ -81,6 +81,10 @@ let setAcceptableDates = function(){
 
     endd.onblur = function(){
         // elegxos an exei o user alles krathseis stis hmeromhnies poy eishgage 
+        console.log(document.querySelector("#start"));
+        console.log(document.querySelector("#end"));
+        console.log(document.querySelector("#userId"));
+
  
         let str = "" + document.querySelector("#start").value +',' + document.querySelector("#end").value +',' + document.querySelector("#userId").value ;
         fetch("/findKrathseisByUserid/" + str).then(

@@ -53,7 +53,8 @@ sql.query("SELECT dwmatia.id_kathgorias_dwm, desmefsh_dwmatioy.id_kathgorias,des
 }
 
 exports.findKrathshByUserid = function(startd,endd,userid,result) {
-    sql.query("SELECT * FROM krathsh WHERE start_date <= ? AND end_date>= ? AND id_pelath = ?",[startd,endd,userid],
+    console.log(startd,endd,userid);
+    sql.query("SELECT * FROM krathsh WHERE start_date <= ? AND end_date>= ? AND id_pelath = ?",[endd,startd,userid],
     (err,res)=>{
         if(err){
             console.log(err);
