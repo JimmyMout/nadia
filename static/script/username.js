@@ -10,10 +10,13 @@ input.onblur = function(){
                 console.log("afto ftanei ston client sto fetch", unique);
                 if(unique){
                     uniue_username_div.setAttribute("hidden","true");
+                    document.querySelector("#sign_up").removeAttribute("disabled");
+
                 }
                 else{
                     
                     uniue_username_div.removeAttribute("hidden");
+                    document.querySelector("#sign_up").setAttribute("disabled","true");
                 }
             }
         )
@@ -31,10 +34,14 @@ input_email.onblur = function(){
                 console.log("afto ftanei ston client sto fetch", unique);
                 if(unique){
                     uniue_email_div.setAttribute("hidden","true");
+                    document.querySelector("#sign_up").removeAttribute("disabled");
+
                 }
                 else{
                     
                     uniue_email_div.removeAttribute("hidden");
+                    document.querySelector("#sign_up").setAttribute("disabled","true");
+
                 }
             }
         )

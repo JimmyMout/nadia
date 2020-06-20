@@ -61,18 +61,11 @@ exports.doLogin = function (req, res, authenticated) {
         userModel.getUserByUsername(username,async (err,user)=>{
             console.log("afto epistrefetai ston user", user);
 
-            if(err){
-                //edw erxetai otan den briskei to username
-                console.log(err);
-                authenticated(true,null);
-                return;
-            }
 
             if (user == null) {
                 // authenticated(null, false, { message: 'Δε βρέθηκε αυτός ο χρήστης' });
                 console.log('Δε βρέθηκε αυτός ο χρήστης');
                 authenticated(1,null);
-                return;
              }
 
              try {
@@ -135,7 +128,7 @@ exports.doLogin = function (req, res, authenticated) {
             req.session.points = loginResult.points;
             console.log(req.session);
             //Αν έχει τιμή η μεταβλητή req.session.originalUrl, αλλιώς όρισέ τη σε "/" 
-            const redirectTo = req.session.originalUrl || "/";
+            const redirectTo =  "/";
             // res.redirect("/");
             res.redirect(redirectTo);
         }

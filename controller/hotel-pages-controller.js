@@ -12,8 +12,9 @@ exports.renderEggrafh = function (req,res){
 }
 exports.renderIndex = function (req,res){
     if(req.session.noname || req.session.wrong){
-        req.session.destroy();
-    }
+        req.session.noname=false;
+        req.session.wrong = false ;
+        }
     res.render('index');
 }
 exports.renderLogin = function (req,res){
