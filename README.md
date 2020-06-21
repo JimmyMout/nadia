@@ -49,5 +49,5 @@ const model = require('../model/hotel-model-mysql.js');
 Στην συνέχεια πρέπει να πατηθεί στα actions των module: Apache και MySQL, start.
 Αφού τρέξει μετά απο λίγα δευτερόλεπτα θα χρειαστεί να πατηθεί το Admin του module: MySQL και θα ανοιξει μια σελίδα στον browser.
 Μέσω της σελίδας που άνοιξε θα πρέπει να δημιουργηθεί ένας φάκελος με ονομα nadia και ένας υποφάκελος με όνομα nadia_hotel. 
-Πατόντας στο nadia_hotel στο κομπί Κώδικας MySQL προστήθεται ο κώδικας του αρχείου `nadia_hotel_NICKI_MINAJ.sql` με copy paste και στην συνέχεια Εκτέλεση.
+Πατόντας στο nadia_hotel στο κομπί Κώδικας MySQL προστήθεται ο κώδικας του αρχείου `nadia.sql` με copy paste και στην συνέχεια Εκτέλεση.
  
