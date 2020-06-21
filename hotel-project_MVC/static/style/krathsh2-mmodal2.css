@@ -1,0 +1,53 @@
+
+/* The Modal (background) */
+/* The Modal (background) */
+.modal#mmodal{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    top: 0px;
+    overflow: auto;/* Enable scroll if needed  */
+    background-color:  rgba(93, 97, 23, 0.5); /* Black w/ opacity */
+  }
+
+    
+    /* Modal Header */
+.mmodal-header {
+    padding: 2px 16px;
+    background-color: #503f3d;
+    color: white;
+  }
+  
+  /* Modal Body */
+  .mmodal-body {padding: 2px 16px;}
+  
+  /* Modal Footer */
+  .mmodal-footer {
+    padding: 2px 16px;
+    background-color: #503f3d;
+    color: white;
+  }
+  
+  /* Modal Content */
+  .mmodal-content {
+    position: relative;
+    background-color: #bfc72b;
+    margin: auto;
+    top:100px;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: manimatetop;
+    animation-duration: 0.4s
+  }
+
+  /* Add Animation */
+  @keyframes manimatetop {
+    from {top: -2500px; opacity: 0}
+    to {top: 100; opacity: 1}
+  } 
+
+
+  #info:hover{
+    background-color: #91f8f0 !important;
+  }

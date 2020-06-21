@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Hotel Nadia</title>
+
+
+</head>
+<body>
+
+<div class="sticky-top">
+      
+
+        <div class="header container-fluid "  >
+            <div class="row"  >
+                <div class="col-12 col-sm-4">
+                <a href="/index"><img src="img/nadia_hotel.png" alt="" ></a>
+                </div>
+                <div class="col-12 col-sm-4">
+                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                        <div class="btn-group" role="group">
+                          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" 
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                           >
+                            Ελληνικά
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            <a class="dropdown-item" href="">Ελληνικά</a>
+                            <a class="dropdown-item" href="">English</a>
+                          </div>
+                        </div>
+                      </div>
+                      {{#if name}}
+                      <div style="color: #939927;">
+                        Όνομα: <em> {{name}}</em> <br>
+                        Επώνυμο: <em>{{lname}}</em> <br>
+                        Πόντοι: <em>{{points}}</em>
+                      </div>
+
+                       {{/if}}
+
+                </div>
+    
+                <div class="col-12 col-sm-4" >
+                    <p class="phone-number" >
+                      ΤΗΛΕΦΩΝΟ: <span > 0983 584994 2299</span>
+                    </p>
+                    <div class="header-buttons" style="margin-bottom:5px;">
+                        <button  class="btn-default"  style="margin-bottom: 3px;" >
+                           <a href="/krathsh"> ΚΡΑΤΗΣΗ ONLINE  </a> 
+                        </button>
+                        <br>
+                        
+                        {{#if userId}} 
+                        <a  style="color: #939927;" href="/logout">Αποσύνδεση</a>
+                        {{else}}
+                        <button  class="btn-default"  >
+                            {{!-- <a  href="?page=eggrafh">SIGN UP  </a> --}}
+                            <a  href="/eggrafh">SIGN UP  </a>
+                        </button><button id="log-in-button"  class="btn-default" style="margin-left: 5px;"  >
+                          <a href="/login">LOG IN </a> 
+                      </button>
+                        {{/if}}
+                      
+
+    
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+
+
+
+        <nav class="navbar  navbar-expand-md navbar-light " style="padding: 0px;">
+            <!-- <a class="navbar-brand" href="#">HOME</a> -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" 
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" 
+            aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+      
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto" >
+                <li class="nav-item active" >
+                  <a class="nav-link" style="color: white;"   href="/index"><i class="fa fa-fw fa-home"></i>Home
+                    <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item " >
+                  <a class="nav-link" style="color: white; "  href="#">Το Ξενοδοχείο
+                    <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" style="color: white;"  href="#">Διαμονή</a>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle" style="color: white;"  
+                  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" 
+                  aria-expanded="false">
+                    Εστίαση
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link " href="#" style="color: white;"  aria-disabled="true">
+                   Αίθουσες Εκδηλώσεων</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" id="1234" style="color: white;"  href="#" aria-disabled="true">Υπηρεσίες Αναψυχής</a>
+                </li>
+                <li class="nav-item dropdown active">
+                  <a class="nav-link dropdown-toggle" style="color: white;"   href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Φωτογραφίες
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item"  href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </li>
+              </ul>
+              <!-- <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form> -->
+            </div>
+          </nav>
+
+    </div>
+
+</div>
+
+
+
+<div class="main-content-fwto container-fluid"  >
+    <br><br>
+  <div class="row justify-content-around" >
+    <div class="col-2 " >
+
+    </div>
+    <div class="col-8 " style="font-family:Verdana; color:linen; background-color: #271e1d">
+          <h3 style="font-weight:lighter;">ΕΝΑ ΠΟΛΥΒΡΑΒΕΥΜΕΝΟ ΣΥΓΧΡΟΝΟ ΞΕΝΟΔΟΧΕΙΟ ΣΤΟ ΚΕΝΤΡΟ ΤΗΣ ΠΑΤΡΑΣ </h3> 
+    </div>
+    <div class="col-1 " >
+    </div>
+  </div>
+  <br>
+  <div class="row justify-content-around" >
+    <div class="col-2 " >
+    </div>
+    <div class="col-8 " style="font-family:Verdana; ">
+        <h4>ΤΟ ΞΕΝΟΔΟΧΕΙΟ ΜΕ ΜΙΑ ΜΑΤΙΑ</h4>
+      <hr style="border-top: 2px dotted #2e2726; ">
+
+    </div>
+    <div class="col-1 " >
+    </div>
+    
+  </div>
+        
+
+  <div class="row justify-content-around" >
+    <div class="col-2 " >
+    </div>
+    <div class="col-8 " style="font-family:Verdana; ">
+        <div class="row justify - conternt - around">
+            <div class="col-3">
+                <img src="img/pic1.jpg" alt="Το Ξεχοδοχείο μας" style="width: 100%; height: 100px; border-radius: 5px ; " alt="">
+
+            </div>
+            <div class="col-3">
+                <img src="img/pic2.jpg" alt="Το Ξεχοδοχείο μας" style="width: 100%; height: 100px; ;" alt="">
+
+            </div>
+            <div class="col-3">
+                <img src="img/pic3.jpg" alt="Το Ξεχοδοχείο μας" style="width: 100%; height: 100px; ;" alt="">
+
+            </div>
+
+        </div>
+
+
+      <br>
+      <hr style="border-top: 2px dotted #2e2726; ">
+    </div>
+    <div class="col-1 " >
+    </div>
+    
+  </div>
+</div>
+  <br><br>
+
+
+<hr style=" margin:0px; border:0px; height:5px; background-color:#939927; ">
+  <div class="footer" style="background-color:#e7dcda;" >
+    <div class="row">
+    <div class="col-sm-2 col-12 ">
+      <h2 >Best Price</h2>
+      <h2 style="word-break:break-all ;">Guarantee</h2>
+
+      </div>
+      <div class="col-sm-1" style="font-size: small;"></div>
+
+      <div class="col-sm-5 col-12">
+        <h1 class="w-100" style="color: #939927;">NADIA HOTEL PATRA</h1>
+        <p style="font-size: small;" >ΛΕΥΚΩΣΙΑΣ 18 * ΤΗΛΕΦΩΝΟ: 0983 584994 2299 </p>
+        <a href="" class="fa fa-envelope" ></a> 
+        <a href="" class="fa fa-facebook" ></a>
+        <a href="" class="fa fa-twitter" ></a>
+        <a href="" class="fa fa-youtube" ></a>
+        <a href="" class="fa fa-instagram" ></a>
+        <br>
+
+        <hr style="text-decoration: dashed; margin-left:0px; margin-bottom: 5px;  background-color:#503f3d;">
+        <a href="" style="text-decoration: none; font-size: medium; color: #939927;">Πώς να έρθετε</a><span> | </span>
+        <a href="" style="text-decoration: none; font-size: medium; color: #939927;">Μέσα μεταφοράς</a><span> | </span>
+        <a href="" style="text-decoration: none; font-size: medium; color: #939927;">Parking</a><span> | </span>
+
+        <hr style="text-decoration: dashed; margin-left:0px; margin-top: 5px;  background-color:#503f3d;">
+        <div class="mapouter">
+          <div class="gmap_canvas">
+            <iframe width="500" height="500" id="gmap_canvas" 
+            src="https://maps.google.com/maps?ll=38.2466395,21.734574&q=Πάτρα&t=&z=16&ie=UTF8&iwloc=&output=embed" frameborder="0" 
+            scrolling="no" marginheight="0" marginwidth="0">
+          </iframe>
+        </div>
+        <style>.mapouter{position:relative;text-align:right;width:100%;}
+        .gmap_canvas {overflow:hidden;background:none!important; width:100%;}</style>
+        </div>             
+
+
+        <br>
+
+        <a href="" style="color: #939927;">Privacy policy</a>
+
+        <br>  
+
+        </div>
+        <div class="col-sm-3 col-12" style="font-size: small;">
+          <br><br>
+          <p >ΤΜΗΜΑ ΚΡΑΤΗΣΕΩΝ: 0030 210 920 6006 <br>
+          ΤΜΗΜΑ ΠΩΛΗΣΕΩΝ: 0030 210 920 6700 <br>
+          ΤΜΗΜΑ ΕΚΔΗΛΩΣΕΩΝ: 0030 210 920 6800</p>
+          <br><br>
+          <p>ΟΜΙΛΟΥΜΕΝΕΣ ΓΛΩΣΣΕΣ ΑΠΟ ΤΟ ΠΡΟΣΩΠΙΚΟ <br>
+          Ελληνικά, Αγγλικά, Γαλλικά, Γερμανικά, Ιταλικά, Ρώσικα</p>
+          <br><br>
+          <p>ΠΡΟΣΒΑΣΙΜΟΤΗΤΑ <br>
+          Πρόσβαση σε όλους τους χώρους με αναπηρικό αμαξίδιο <br>
+          10 ειδικά σχεδιασμένα δωμάτια <br>
+           Parking</p>
+
+          <br>
+          <br>
+          <p>ΠΟΛΙΤΙΚΗ ΓΙΑ ΚΑΤΟΙΚΙΔΙΑ <br>
+          Επιτρέπονται μόνο τα ζώα που οδηγούν
+            ή βοηθούν ανθρώπους με αναπηρία</p>
+          <br><br>
+          <p>ΔΥΝΑΤΟΤΗΤΕΣ ΔΙΑΔΙΚΤΥΟΥ <br>
+          Αναλογική γραμμή <br>
+            Πρόσβαση στο διαδίκτυο υψηλής ταχύτητας <br>
+            Ασύρματη σύνδεση</p>
+
+            <p>CHECK–IN & CHECK–OUT <br>
+              2:00 PM             12:00 PM <br>
+              H Reception λειτουργεί όλο το 24ωρο</p>
+
+        </div>
+        <div class="col-1" style="font-size: small;"></div>
+
+
+      </div>
+      <hr style="background-color: #503f3d; margin-bottom: 0px;">
+      <div class="row " style=" width: 800px; height: 25px;margin-bottom: 0px; margin: auto; background-color:#939927;">
+        <p style=" margin: 0px; display: inline; justify-self: start;">&nbsp
+          <a href="" class="fa fa-copyright" style="text-decoration: none; font-size: medium;"></a> 2020 Nadia Hotel Patras </p>
+        
+      </div>
+
+
+
+</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>

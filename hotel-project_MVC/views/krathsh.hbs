@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Hotel Nadia</title>
+</head>
+
+<body style="background-image: url(img/krathsh.jpg); background-size: cover;">
+  <div class="sticky-top">
+    <div class="header container-fluid "  >
+      <div class="row"  >
+          <div class="col-3 col-sm-1">
+          <a href="/index"><img src="img/logo2.png" alt="" ></a>
+          </div>
+                          <div class="col-3 col-sm-4" style="font-size: larger;">
+                       {{#if userId}}
+                      <div style="color: #939927;">
+                        Όνομα: <em> {{name}}</em> <br>
+                        Επώνυμο: <em>{{lname}}</em> <br>
+                        Πόντοι: <em>{{points}}</em>
+                      </div>
+
+                       {{/if}}                 
+                </div>
+                <div class="col-3 col-sm-3">
+                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                        <div class="btn-group" role="group">
+                          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" 
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                           >
+                            Ελληνικά
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            <a class="dropdown-item" href="">Ελληνικά</a>
+                            <a class="dropdown-item" href="">English</a>
+                          </div>
+                        </div>
+                      </div>
+
+
+                </div>
+    
+                <div class="col-3 col-sm-3" >
+                    <p class="phone-number" style="display: inline;">
+                      ΤΗΛΕΦΩΝΟ: <span > 0983 584994 2299</span>
+                    </p>
+                    <div class="header-buttons" style="margin-bottom:2px;">
+                        <button  class="btn-default"  style="margin-bottom: 3px;" >
+                           <a href="/krathsh"> ΚΡΑΤΗΣΗ ONLINE  </a> 
+                        </button>
+                        <br>
+                        
+                        {{#if userId}} 
+                        <form action="/istoriko" method="POST" style="display:inline;">
+                        <input type="text" name="userId" value="{{userId}}" hidden>
+                        <button type="submit"  style=" color: black;" >Ιστορικό </button> 
+                        </form>
+                        <a  style="color: #939927;" href="/logout">Αποσύνδεση</a>
+                        {{else}}
+                        <button  class="btn-default"  >
+                            {{!-- <a  href="?page=eggrafh">SIGN UP  </a> --}}
+                            <a  href="/eggrafh">SIGN UP  </a>
+                        </button><button id="log-in-button"  class="btn-default" style="margin-left: 5px;"  >
+                          <a href="/login">LOG IN </a> 
+                      </button>
+                        {{/if}}
+                      
+
+    
+                    </div>
+    
+      </div>
+  </div>
+  </div>
+    <h2 class="text-light" style="padding-left: 15px; padding-right: 15px;">
+      Κάνε Κράτηση!
+    </h2>
+<input  type="text" id="userId" name="userId" value="{{userId}}" hidden>
+
+    <form  class="forma1" action="/RenderKrathsh2" method="POST" 
+    style="width: 95%; margin: auto; background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(209, 54, 54, 0.0));">
+    <div class="container">
+      <div class="row text-light">
+          <div class="col-lg-4 col-md-4 col-sm-6">
+            Check In
+            <input type="date" id="start"
+            name="tripStart" value="" required >
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-6">
+            Check Out
+            <input type="date" id="end"
+            name="tripEnd" value="" required >
+          </div>
+      </div>
+  </div>
+  <div class="container">
+      <div class="row text-light">
+          <div class="col-lg-3 col-md-3 col-sm-6">
+            Άτομα 
+            <br>
+            <button id="minus" type="button" style="width: 50px;">-</button>
+            <input class="search" id="adults" name="adults" type="text" required value="1" min="1" style="width: 50px; text-align: center;" >
+            <button id="plus" type="button" style="width: 50px;">+</button>
+          </div>
+           <div class="col-lg-3 col-md-3 col-sm-6" hidden>
+             Παιδιά
+            <br>
+            <button  id="minus" type="button" style="width: 50px;">-</button>
+            <input class="search" id="kids" name="kids" type="text" value="0" style="width: 50px; text-align: center;" >
+            <button id="plus" type="button" style="width: 50px;">+</button>
+
+          </div>  
+          <div class="col-lg-3 col-md-3 col-sm-6" hidden>
+            Δωμάτια
+            <br>
+            <button id="minus" type="button" style="width: 50px;">-</button>
+            <input class="search" id="rooms" name="rooms" type="text" value="1" min="1"  style="width: 50px; text-align: center;" >
+            <button id="plus" type="button" style="width: 50px;">+</button>
+
+          </div>  
+            <div class="col-lg-3 col-md-3 col-sm-6"></div>
+        </div>
+  </div>
+  <div class="container">
+    <div class="row text-light">
+        <div class="col-lg-3 col-md-3 col-sm-6">
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Κωδικός</label>
+            <input disabled class="form-control form-control-sm" type="text"  placeholder="Temporary disabled">
+              <br>
+            <div id="foundKrathsh" hidden class="container fluid" style="display: inline-block; border-radius:5px; background-color:rgba(171, 240, 240, 0.719);">
+              <p> Υπάρχουν ήδη δικές σας κρατήσεις για τις ημερομηνίες που εισάγατε <br>
+              Μήπως θέλετε να επισκεφτείτε  <a href="//istoriko?istoriko_userid={{userId}}" >το ιστορικό σας</a>
+              </p>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-6">
+          <button class="btn btn-sm search1" type="submit" style="background-color: #939927;">Αναζήτηση</button>
+        </div>
+    </div>
+  </div>
+</form>
+  
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script src="script/krathsh1.js" defer></script>
+  
+  </body>
+</html>
