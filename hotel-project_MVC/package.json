@@ -20,7 +20,7 @@
 	"dependencies": {
 		"@azure/cosmos": "^3.6.3",
 		"assert": "^2.0.0",
-		"bcrypt": "^3.0.6",
+		"bcrypt": "^5.0.0",
 		"express-flash": "0.0.2",
 		"express-session": "^1.17.1",
 		"mysql": "^2.18.1",
